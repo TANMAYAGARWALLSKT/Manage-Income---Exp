@@ -140,7 +140,7 @@ function Incometable() {
               // className="text-7xl  bg-green-500/40 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
               type="submit"
               size="lg"
-              variant="sc"
+              
               onClick={() =>
                 toast({
                   title: "Successfully added.",

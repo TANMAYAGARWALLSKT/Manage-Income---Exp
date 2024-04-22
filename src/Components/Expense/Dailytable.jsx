@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../Config/firebase";
-import { NavLink } from "react-router-dom";
-import { useToast } from "@chakra-ui/react";
+import { Input } from "@nextui-org/react";
 
 function Dailytable() {
   const [Model, SetModel] = useState("N/A");
@@ -14,7 +13,6 @@ function Dailytable() {
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [type, settype] = useState("Expense");
-  const toast = useToast();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -67,50 +65,46 @@ function Dailytable() {
           onSubmit={handleinput}
           className="flex flex-wrap mb-[10vh] gap-20 justify-center place-content-center "
         >
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center ">Note</label>
-            <input
-              type="text"
-              className="rounded-xl w-[20vw] bg-zinc-800 p-5 text-black text-5xl"
-              placeholder="Note"
-              onChange={(e) => SetNotes(e.target.value)}
-            />
-          </div>
+          <Input
+            label="Note"
+            className="w-[22vw]"
+            type="text"
+            size="lg"
+            placeholder="Note"
+            onChange={(e) => SetNotes(e.target.value)}
+          />
 
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center">Amount</label>
-            <input
-              type="number"
-              id="Amount"
-              name="Amount"
-              className="rounded-xl w-[20vw] bg-zinc-800/40 p-5 text-black text-4xl"
-              placeholder="Amount"
-              onChange={(e) => SetAmount(Number(e.target.value))}
-            />
-          </div>
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-6xl p-5 flex justify-center">
-              Payment Mode
-            </label>
-            <input
-              type="text"
-              id="payment-mode"
-              name="payment_mode"
-              className="rounded-xl bg-zinc-800/40 w-[20vw] hover:border-blue-500 selection:border-blue-500 focus:border-blue-500 type active:border-blue-500 selection:border-2   p-5 text-black text-4xl"
-              placeholder="Enter Payment Mode"
-              list="payment-options"
-              onChange={(e) => SetPaymentMode(e.target.value)}
-            />
-            <datalist id="payment-options">
-              <option value="UPI">UPI</option>
-              <option value="Credit Card">C.C</option>
-              <option value="Cash">Cash</option>
-              <option value="Due">DUE</option>
-              <option value="Paid">Paid</option>
-              <option value="Bajaj">Bajaj</option>
-              <option value="Other">Others</option>
-            </datalist>
-          </div>
+          <Input
+            label="Amount"
+            className="w-[22vw]"
+            type="number"
+            id="Amount"
+            name="Amount"
+            size="lg"
+            placeholder="Amount"
+            onChange={(e) => SetAmount(Number(e.target.value))}
+          />
+
+          <Input
+            label="Payment Mode"
+            className="w-[22vw]"
+            type="text"
+            id="payment-mode"
+            name="payment_mode"
+            size="lg"
+            placeholder="Enter Payment Mode"
+            list="payment-options"
+            onChange={(e) => SetPaymentMode(e.target.value)}
+          />
+          <datalist id="payment-options">
+            <option value="UPI">UPI</option>
+            <option value="Credit Card">C.C</option>
+            <option value="Cash">Cash</option>
+            <option value="Due">DUE</option>
+            <option value="Paid">Paid</option>
+            <option value="Bajaj">Bajaj</option>
+            <option value="Other">Others</option>
+          </datalist>
 
           <div className="flex w-[20vw] flex-wrap">
             <button
