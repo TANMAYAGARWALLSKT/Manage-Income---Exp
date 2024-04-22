@@ -59,7 +59,7 @@ function Incometable() {
   const toast = useToast();
   return (
     <>
-      <div className=" pl-[6.5vw] mt-[5vh] flex flex-wrap  ml-[10vw] w-[85vw] h-[80vh] rounded-3xl Forst z-10 absolute top-0  text-zinc-100 ">
+      <div className=" pl-[6.5vw] mt-[5vh] flex flex-wrap  overflow-hidden  ml-[10vw] w-[85vw] h-[80vh] rounded-3xl Forst z-10 absolute top-0  text-zinc-100 ">
         <h1 className="font-bold text-green-600 text-[8vw] w-screen flex justify-center ">
           Add {type}
         </h1>
