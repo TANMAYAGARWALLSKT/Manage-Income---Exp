@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+// import {profit}  from " ."
 
 function Navbar() {
   const [date, setDate] = useState(new Date().toLocaleDateString());
@@ -31,11 +32,7 @@ function Navbar() {
         }}
         to="./income"
       >
-        <img
-          className="w-14 bg-transparent"
-          src="./src\assets\profit.png"
-          alt=""
-        />
+        <img src="public\profit.png" alt="" />
       </NavLink>
       <NavLink
         className={(e) => {
@@ -45,7 +42,7 @@ function Navbar() {
         }}
         to="./Expenses"
       >
-        <img className="w-14" src="src\assets\Expen.png" alt="" />
+        <img className="w-14" src="public\Expen.png" alt="" />
       </NavLink>
       <NavLink
         className={(e) => {
@@ -55,7 +52,7 @@ function Navbar() {
         }}
         to="./DailyBook"
       >
-        <img className="w-14" src="src\assets\books.png" alt="" />
+        <img className="w-14" src="public\books.png" alt="" />
       </NavLink>
     </div>
   );
