@@ -52,7 +52,7 @@ function Navbar() {
         }}
         to="./DailyBook"
       >
-        <img className="w-14" src="public\books.png" alt="" />
+        <img className="w-14" src="/filter.png" alt="" />
       </NavLink>
     </div>
   );
