@@ -61,7 +61,7 @@ function Incometable() {
           Add {type}
         </h1>
         <form id="Income" onSubmit={handleInput}>
-          <span className="flex flex-wrap w-[80vw] gap-10 h-[10vh] ">
+          <span className="flex flex-wrap w-[80vw] justify-center content-center gap-10 h-[10vh] ">
             <Input
               variant="bordered"
               type="Mdel"
@@ -140,6 +140,7 @@ function Incometable() {
               // className="text-7xl  bg-green-500/40 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
               type="submit"
               size="lg"
+              variant="sc"
               onClick={() =>
                 toast({
                   title: "Successfully added.",
