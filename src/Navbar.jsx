@@ -32,7 +32,7 @@ function Navbar() {
         }}
         to="./income"
       >
-        <img src="public\profit.png" alt="" />
+        <img src="/profit.png" alt="" />
       </NavLink>
       <NavLink
         className={(e) => {
@@ -42,7 +42,7 @@ function Navbar() {
         }}
         to="./Expenses"
       >
-        <img className="w-14" src="public\Expen.png" alt="" />
+        <img className="w-14" src="/Expen.png" alt="" />
       </NavLink>
       <NavLink
         className={(e) => {

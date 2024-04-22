@@ -64,13 +64,13 @@ export default function Booktable() {
   }
 
   return (
-    <div className="w-full h-full overflow-x-hidden">
+    <div className="w-screen h-full overflow-x-hidden flex justify-center ">
       <div className="text-3xl h-full w-full p-1 ml-[10vw] overflow-x-hidden text-white">
         <div className="flex my-10 h-full items-center gap-10">
           <Input
             onChange={handleDateChange}
             value={date}
-            className="w-[20vw] font-bold"
+            className="w-[15vw] font-bold"
             type="text"
             label="Date"
           />
@@ -79,7 +79,7 @@ export default function Booktable() {
             items={PaymentModelist}
             label=" Payment Mode"
             placeholder="Select a  Payment Mode"
-            className="max-w-md font-extrabold "
+            className="w-[15vw] font-extrabold "
             onChange={handlePaymentModeChange}
           >
             {(PaymentModelist) => (
@@ -97,7 +97,7 @@ export default function Booktable() {
             items={typelist}
             label=" Type"
             placeholder="Select a Type"
-            className="max-w-md font-bold"
+            className="w-[15vw] font-bold"
           >
             {(PaymentModelist) => (
               <SelectItem key={PaymentModelist.value}>
@@ -117,7 +117,7 @@ export default function Booktable() {
         </div>
         <Table
           variant="ghost"
-          className="w-[85vw] h-full text-3xl  "
+          className="w-[80vw] h-full text-3xl  "
           aria-label="Example static collection table"
         >
           <TableHeader>
