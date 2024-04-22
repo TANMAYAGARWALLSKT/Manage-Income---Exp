@@ -25,6 +25,7 @@ export default function Booktable() {
 
   async function fetchDataAndFilter(date, paymentModeselect, Typemode) {
     try {
+      
       const selectdata = collection(db, "Income");
       const queryRef = query(selectdata, where("Date", "<=", date));
       const querySnapshot = await getDocs(queryRef);
@@ -74,7 +75,6 @@ export default function Booktable() {
             type="text"
             label="Date"
           />
-          
 
           <Select
             items={PaymentModelist}
@@ -107,7 +107,7 @@ export default function Booktable() {
             )}
           </Select>
           <Button
-            className="text-zinc-700 font-bold w-[6vw] h-[4vh] text-2xl"
+            className="text-zinc-100 font-bold w-[6vw] p-8 h-[4vh] text-2xl"
             color="success"
             onClick={() =>
               fetchDataAndFilter(date, paymentModeselect, Typemode)
@@ -141,8 +141,8 @@ export default function Booktable() {
                   <spam
                     className={
                       item.Type === "Expense"
-                        ? "bg-red-600 p-8 w-10 text-2xl rounded-3xl "
-                        : "bg-green-600 p-8  w-10  text-2xl rounded-3xl "
+                        ? "bg-red-600 p-3 w-6 text-2xl rounded-3xl "
+                        : "bg-green-600 p-3  w-6  text-2xl rounded-3xl "
                     }
                   >
                     {item.Type}
