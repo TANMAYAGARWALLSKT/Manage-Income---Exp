@@ -137,14 +137,14 @@ function Incometable() {
             </datalist>
 
             <Button
-              // className="text-7xl  bg-green-500/40 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
+             
               type="submit"
               size="lg"
               
               onClick={() =>
                 toast({
                   title: "Successfully added.",
-                  status: "success",
+                  status: "Success",
                   duration: 1000,
                   isClosable: true,
                 })

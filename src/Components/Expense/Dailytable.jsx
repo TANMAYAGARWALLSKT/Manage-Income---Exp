@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../Config/firebase";
-import { Input } from "@nextui-org/react";
+import { Input, Button } from "@nextui-org/react";
 
 function Dailytable() {
   const [Model, SetModel] = useState("N/A");
@@ -65,51 +65,52 @@ function Dailytable() {
           onSubmit={handleinput}
           className="flex flex-wrap mb-[10vh] gap-20 justify-center place-content-center "
         >
-          <Input
-            label="Note"
-            className="w-[22vw]"
-            type="text"
-            size="lg"
-            placeholder="Note"
-            onChange={(e) => SetNotes(e.target.value)}
-          />
+          <span  className="flex justify-center gap-20 w-[80vw] flex-wrap">
+            <Input
+              label="Note"
+              className="w-[22vw]"
+              type="text"
+              size="lg"
+              placeholder="Note"
+              onChange={(e) => SetNotes(e.target.value)}
+            />
 
-          <Input
-            label="Amount"
-            className="w-[22vw]"
-            type="number"
-            id="Amount"
-            name="Amount"
-            size="lg"
-            placeholder="Amount"
-            onChange={(e) => SetAmount(Number(e.target.value))}
-          />
+            <Input
+              label="Amount"
+              className="w-[22vw]"
+              type="number"
+              id="Amount"
+              name="Amount"
+              size="lg"
+              placeholder="Amount"
+              onChange={(e) => SetAmount(Number(e.target.value))}
+            />
 
-          <Input
-            label="Payment Mode"
-            className="w-[22vw]"
-            type="text"
-            id="payment-mode"
-            name="payment_mode"
-            size="lg"
-            placeholder="Enter Payment Mode"
-            list="payment-options"
-            onChange={(e) => SetPaymentMode(e.target.value)}
-          />
-          <datalist id="payment-options">
-            <option value="UPI">UPI</option>
-            <option value="Credit Card">C.C</option>
-            <option value="Cash">Cash</option>
-            <option value="Due">DUE</option>
-            <option value="Paid">Paid</option>
-            <option value="Bajaj">Bajaj</option>
-            <option value="Other">Others</option>
-          </datalist>
+            <Input
+              label="Payment Mode"
+              className="w-[22vw]"
+              type="text"
+              id="payment-mode"
+              name="payment_mode"
+              size="lg"
+              placeholder="Enter Payment Mode"
+              list="payment-options"
+              onChange={(e) => SetPaymentMode(e.target.value)}
+            />
+            <datalist id="payment-options">
+              <option value="UPI">UPI</option>
+              <option value="Credit Card">C.C</option>
+              <option value="Cash">Cash</option>
+              <option value="Due">DUE</option>
+              <option value="Paid">Paid</option>
+              <option value="Bajaj">Bajaj</option>
+              <option value="Other">Others</option>
+            </datalist>
 
-          <div className="flex w-[20vw] flex-wrap">
-            <button
-              className="text-7xl  bg-red-500/80 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
+            <Button
+              // className="text-7xl  bg-red-500/80 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
               type="submit"
+              size="lg"
               onClick={() =>
                 toast({
                   title: "Successfully added.",
@@ -120,8 +121,8 @@ function Dailytable() {
               }
             >
               Submit
-            </button>
-          </div>
+            </Button>
+          </span>
         </form>
       </div>
     </>
