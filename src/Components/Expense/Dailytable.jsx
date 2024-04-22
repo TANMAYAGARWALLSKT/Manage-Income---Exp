@@ -65,7 +65,7 @@ function Dailytable() {
           onSubmit={handleinput}
           className="flex flex-wrap mb-[10vh] gap-20 justify-center place-content-center "
         >
-          <span  className="flex flex-wrap w-[80vw] justify-center content-center gap-10 ">
+          <span className="flex flex-wrap w-[80vw] justify-center content-center gap-10 ">
             <Input
               label="Note"
               className="w-[22vw]"
@@ -111,6 +111,7 @@ function Dailytable() {
               // className="text-7xl  bg-red-500/80 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
               type="submit"
               size="lg"
+              className="w-[22vw] h-20"
               onClick={() =>
                 toast({
                   title: "Successfully added.",
