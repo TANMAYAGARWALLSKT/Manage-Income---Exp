@@ -33,7 +33,7 @@ function Navbar() {
       >
         <img
           className="w-14 bg-transparent"
-          src="src\assets\profit.png"
+          src="./src\assets\profit.png"
           alt=""
         />
       </NavLink>
