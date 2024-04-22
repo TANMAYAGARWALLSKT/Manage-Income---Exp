@@ -65,7 +65,7 @@ function Dailytable() {
           onSubmit={handleinput}
           className="flex flex-wrap mb-[10vh] gap-20 justify-center place-content-center "
         >
-          <span  className="flex justify-center gap-20 w-[80vw] flex-wrap">
+          <span  className="flex flex-wrap w-[80vw] justify-center content-center gap-10 ">
             <Input
               label="Note"
               className="w-[22vw]"
