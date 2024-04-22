@@ -59,17 +59,17 @@ function Incometable() {
   const toast = useToast();
   return (
     <>
-      <div className=" pl-[6.5vw] mt-[5vh] flex flex-wrap  ml-[10vw] w-[85vw] h-[90vh] rounded-3xl Forst z-10 absolute top-0  text-zinc-100 ">
+      <div className=" pl-[6.5vw] mt-[5vh] flex flex-wrap  ml-[10vw] w-[85vw] h-[80vh] rounded-3xl Forst z-10 absolute top-0  text-zinc-100 ">
         <h1 className="font-bold text-green-600 text-[8vw] w-screen flex justify-center ">
           Add {type}
         </h1>
         <form
           id="Income"
           onSubmit={handleInput}
-          className="flex flex-wrap mb-[10vh] gap-20 justify-center place-content-center "
+          className=" flex flex-wrap p-20 pb-32 justify-between place-items-center  "
         >
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center ">Model</label>
+          <div className=" w-">
+            <label className=" text-6xl p-5 flex justify-center ">Model</label>
             <Input
               size="lg"
               type="text"
@@ -78,8 +78,8 @@ function Incometable() {
               onChange={(e) => SetModel(e.target.value)}
             />
           </div>
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-6xl p-5 flex justify-center">
+          <div className="">
+            <label className="text-6xl p-5 flex justify-center  ">
               Payment Mode
             </label>
             <Input
@@ -102,8 +102,8 @@ function Incometable() {
               <option value="Other">Others</option>
             </datalist>
           </div>
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center">Company</label>
+          <div className="">
+            <label className="text-6xl p-5 flex justify-center ">Company</label>
             <Input
               size="lg"
               type="text"
@@ -127,8 +127,8 @@ function Incometable() {
             </datalist>
           </div>
 
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center">Amount</label>
+          <div className="">
+            <label className="text-6xl p-5 flex justify-center ">Amount</label>
             <Input
               size="lg"
               type="number"
@@ -139,8 +139,8 @@ function Incometable() {
               onChange={(e) => SetAmount(Number(e.target.value))}
             />
           </div>
-          <div className="flex w-[20vw] flex-wrap">
-            <label className="text-7xl p-5 flex justify-center ">Note</label>
+          <div className="">
+            <label className="text-6xl p-5 flex justify-center  ">Note</label>
             <Input
               size="lg"
               type="text"
@@ -149,7 +149,7 @@ function Incometable() {
               onChange={(e) => SetNotes(e.target.value)}
             />
           </div>
-          <div className="flex w-[20vw] flex-wrap">
+          <div className="text-6xl p-5 flex justify-center ">
             <button
               className="text-7xl  bg-green-500/40 w-[20vw] h-[10vh] mt-[7rem]   rounded-full"
               type="submit"
