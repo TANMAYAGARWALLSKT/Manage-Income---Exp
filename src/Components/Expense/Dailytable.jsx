@@ -3,6 +3,8 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../Config/firebase";
 import { Input, Button } from "@nextui-org/react";
 
+
+
 function Dailytable() {
   const [Model, SetModel] = useState("N/A");
   const [Amount, SetAmount] = useState("0");
