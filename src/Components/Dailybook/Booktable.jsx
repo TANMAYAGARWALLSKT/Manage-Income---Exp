@@ -64,22 +64,23 @@ export default function Booktable() {
   }
 
   return (
-    <div className="w-screen h-full overflow-x-hidden flex justify-center ">
-      <div className="text-3xl h-full w-full p-1 ml-[10vw] overflow-x-hidden text-white">
-        <div className="flex my-10 h-full items-center gap-10">
+    <div className="w-screen h-full  flex justify-center ">
+      <div className="text-3xl h-full  text-white">
+        <span className="flex my-10 h-full w-[80vw] items-center gap-10">
           <Input
             onChange={handleDateChange}
             value={date}
-            className="w-[15vw] font-bold"
+            className=" font-bold"
             type="text"
             label="Date"
           />
+          
 
           <Select
             items={PaymentModelist}
             label=" Payment Mode"
             placeholder="Select a  Payment Mode"
-            className="w-[15vw] font-extrabold "
+            className=" font-extrabold "
             onChange={handlePaymentModeChange}
           >
             {(PaymentModelist) => (
@@ -97,7 +98,7 @@ export default function Booktable() {
             items={typelist}
             label=" Type"
             placeholder="Select a Type"
-            className="w-[15vw] font-bold"
+            className=" font-bold"
           >
             {(PaymentModelist) => (
               <SelectItem key={PaymentModelist.value}>
@@ -114,7 +115,7 @@ export default function Booktable() {
           >
             Filter
           </Button>
-        </div>
+        </span>
         <Table
           variant="ghost"
           className="w-[80vw] h-full text-3xl  "
