@@ -6,7 +6,7 @@
   border-radius: 20px;
   /* background:transparent; */
 
-  background: linear-gradient(214deg, rgba(189, 174, 185, 0.125) 0%, rgba(188, 192, 191, 0.155) 100%);
+  background: #ffffff10;
   backdrop-filter: blur(5px);
 }
 tr{
@@ -16,7 +16,7 @@ tr{
   font-size: 20px;
   font-weight: 600;
   color: #fff;
-  text-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.297);
+  text-shadow: 0 0 1rem 0 rgba(60, 38, 38, 0.297);
 }
 ::selection{
   background-color: rgba(250, 250, 250, 0.46);
