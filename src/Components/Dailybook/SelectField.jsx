@@ -1,7 +1,5 @@
-// SelectField.js
 import React from "react";
 import { Select, SelectItem } from "@nextui-org/react";
-
 const SelectField = ({ label, value, onChange, items }) => {
   return (
     <Select
@@ -12,7 +10,9 @@ const SelectField = ({ label, value, onChange, items }) => {
       placeholder={`Select a ${label}`}
       className="max-w-md font-bold"
     >
-      {(items) => <SelectItem key={items.value}>{items.label}</SelectItem>}
+      {items.map((item) => (
+        <SelectItem key={item.value}>{item.label}</SelectItem>
+      ))}
     </Select>
   );
 };

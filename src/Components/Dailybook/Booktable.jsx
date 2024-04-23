@@ -1,5 +1,5 @@
-import { React, useState, useEffect } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../Config/firebase";
 import {
   Table,
@@ -10,115 +10,128 @@ import {
   TableCell,
   Select,
   SelectItem,
-  Calendar,
   Input,
   Button,
 } from "@nextui-org/react";
-import { PaymentModelist } from "../data";
-import { typelist } from "../data";
+import { PaymentModelist, typelist } from "../data";
 
 export default function Booktable() {
   const [data, setData] = useState([]);
   const [date, setDate] = useState(new Date().toLocaleDateString());
-  const [paymentModeselect, setPaymentModeselect] = useState("null");
-  const [Typemode, setTypemode] = useState("null");
+  const [paymentModeSelect, setPaymentModeSelect] = useState(null);
+  const [typeMode, setTypeMode] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  async function fetchDataAndFilter(date, paymentModeselect, Typemode) {
+  const handfilter =
+    (() => {
+      fetchDataAndFilter();
+    },
+    []); // Fetch data initially on component mount
+
+  const fetchDataAndFilter = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      
-      const selectdata = collection(db, "Income");
-      const queryRef = query(selectdata, where("Date", "<=", date));
+      const selectData = collection(db, "Income");
+      let queryRef = query(selectData, where("Date", "==", date));
+
+      if (paymentModeSelect) {
+        queryRef = query(
+          queryRef,
+          where("PaymentMode", "==", paymentModeSelect)
+        );
+      }
+
+      if (typeMode) {
+        queryRef = query(queryRef, where("Type", "==", typeMode));
+      }
+
       const querySnapshot = await getDocs(queryRef);
 
-      const tempData = [];
-      querySnapshot.forEach((doc) => {
-        tempData.push({ id: doc.id, ...doc.data() });
-      });
+      const tempData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-      const filteredData = tempData.filter((item) => {
-        return (
-          (paymentModeselect === "null" ||
-            ((Typemode === "null" || item.Type === Typemode) &&
-              item.PaymentMode === paymentModeselect)) &&
-          date === item.Date
-        ); // Assuming item.Date is in the same format as date
-      });
-
-      setData(filteredData);
-      return filteredData;
+      setData(tempData);
     } catch (error) {
       console.warn("Error fetching data: ", error);
-      return [];
+      setError("Error fetching data. Please try again later.");
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
-  function handleDateChange(e) {
+  const handleDateChange = (e) => {
     setDate(e.target.value);
-  }
+  };
 
-  function handlePaymentModeChange(e) {
-    setPaymentModeselect(e.target.value);
-  }
+  const handlePaymentModeChange = (value) => {
+    setPaymentModeSelect(value.target.value); // Update to extract the value from event
+  };
 
-  function handleTypeChange(e) {
-    setTypemode(e.target.value);
-  }
+  const handleTypeChange = (value) => {
+    setTypeMode(value.target.value); // Update to extract the value from event
+  };
 
   return (
-    <div className="w-screen h-full  flex justify-center ">
-      <div className="text-3xl h-full  text-white">
-        <span className="flex my-10 h-full w-[80vw] items-center gap-10">
-          <Input
-            onChange={handleDateChange}
-            value={date}
-            className=" font-bold"
-            type="text"
-            label="Date"
-          />
+    <div className="w-screen h-full flex justify-center">
+      <div className="text-3xl h-full text-white">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            fetchDataAndFilter();
+          }}
+        >
+          <span className="flex my-10 h-full w-[80vw] items-center gap-10">
+            <Input
+              onChange={handleDateChange}
+              value={date}
+              className="font-bold"
+              type="text"
+              label="Date"
+            />
 
-          <Select
-            items={PaymentModelist}
-            label=" Payment Mode"
-            placeholder="Select a  Payment Mode"
-            className=" font-extrabold "
-            onChange={handlePaymentModeChange}
-          >
-            {(PaymentModelist) => (
-              <SelectItem
-                className="font-extrabold text-2xl"
-                key={PaymentModelist.value}
-              >
-                {PaymentModelist.label}
-              </SelectItem>
-            )}
-          </Select>
-          <Select
-            value={Typemode}
-            onChange={handleTypeChange}
-            items={typelist}
-            label=" Type"
-            placeholder="Select a Type"
-            className=" font-bold"
-          >
-            {(PaymentModelist) => (
-              <SelectItem key={PaymentModelist.value}>
-                {PaymentModelist.label}
-              </SelectItem>
-            )}
-          </Select>
-          <Button
-            className="text-zinc-100 font-bold w-[6vw] p-8 h-[4vh] text-2xl"
-            color="success"
-            onClick={() =>
-              fetchDataAndFilter(date, paymentModeselect, Typemode)
-            }
-          >
-            Filter
-          </Button>
-        </span>
+            <Select
+              value={paymentModeSelect}
+              onChange={handlePaymentModeChange}
+              items={PaymentModelist}
+              label="Payment Mode"
+              placeholder="Select a Payment Mode"
+              className="font-extrabold"
+              isClearable
+            >
+              {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
+            </Select>
+            <Select
+              value={typeMode}
+              onChange={handleTypeChange}
+              items={typelist}
+              label="Type"
+              placeholder="Select a Type"
+              className="font-bold"
+              isClearable
+            >
+              {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
+            </Select>
+            <Button
+              type="submit"
+              className="text-zinc-100 font-bold w-[6vw] p-8 h-[4vh] text-2xl"
+              color="success"
+              onClick={handfilter}
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Filter"}
+            </Button>
+          </span>
+        </form>
+
+        {error && <p className="text-red-500">{error}</p>}
+
         <Table
           variant="ghost"
-          className="w-[80vw] h-full text-3xl  "
+          className="w-[80vw] h-full text-3xl"
           aria-label="Example static collection table"
         >
           <TableHeader>
@@ -126,7 +139,7 @@ export default function Booktable() {
             <TableColumn className="text-2xl">MODEL</TableColumn>
             <TableColumn className="text-2xl">Amount</TableColumn>
             <TableColumn className="text-2xl">Type</TableColumn>
-            <TableColumn className="text-2xl"> Payment Mode</TableColumn>
+            <TableColumn className="text-2xl">Payment Mode</TableColumn>
             <TableColumn className="text-2xl">Notes</TableColumn>
           </TableHeader>
           <TableBody>
@@ -137,16 +150,13 @@ export default function Booktable() {
                 </TableCell>
                 <TableCell className="text-2xl">{item.Model}</TableCell>
                 <TableCell className="text-2xl">{item.Amount}</TableCell>
-                <TableCell id="type" className="text-2xl rounded-3xl h-[6vw]">
-                  <spam
-                    className={
-                      item.Type === "Expense"
-                        ? "bg-red-600 p-3 w-6 text-2xl rounded-3xl "
-                        : "bg-green-600 p-3  w-6  text-2xl rounded-3xl "
-                    }
-                  >
-                    {item.Type}
-                  </spam>
+                <TableCell
+                  id="type"
+                  className={`text-2xl rounded-3xl h-[6vw] ${
+                    item.Type === "Expense" ? "bg-red-600" : "bg-green-600"
+                  } p-3 w-6`}
+                >
+                  {item.Type}
                 </TableCell>
                 <TableCell className="text-2xl">{item.PaymentMode}</TableCell>
                 <TableCell className="text-2xl">{item.Notes}</TableCell>
