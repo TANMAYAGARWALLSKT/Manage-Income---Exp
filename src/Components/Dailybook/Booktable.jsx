@@ -14,6 +14,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import { PaymentModelist, typelist } from "../data";
+import ExportButton from "./Button_export";
 
 export default function Booktable() {
   const [data, setData] = useState([]);
@@ -164,6 +165,7 @@ export default function Booktable() {
             ))}
           </TableBody>
         </Table>
+        <ExportButton data={data} />
       </div>
     </div>
   );
