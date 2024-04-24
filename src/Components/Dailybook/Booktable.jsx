@@ -18,12 +18,12 @@ import ExportButton from "./Button_export";
 
 export default function Booktable() {
   const [data, setData] = useState([]);
-  const [date, setDate] = useState(new Date().toLocaleDateString());
+  const [EndDate, setDate] = useState(new Date().toLocaleDateString());
   const [paymentModeSelect, setPaymentModeSelect] = useState(null);
   const [typeMode, setTypeMode] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [enddate, setEnddate] = useState();
+  const [StartDate, setStartDate] = useState();
 
   const handfilter =
     (() => {
@@ -36,9 +36,9 @@ export default function Booktable() {
     setError(null);
     try {
       const selectData = collection(db, "Income");
-      let queryRef = query(selectData, where("Date", "<=", date));
-      if (enddate) {
-        queryRef = query(queryRef, where("Date", ">=", enddate));
+      let queryRef = query(selectData, where("Date", "<=", EndDate));
+      if (StartDate) {
+        queryRef = query(queryRef, where("Date", ">=", StartDate));
       }
       if (paymentModeSelect) {
         queryRef = query(
@@ -78,8 +78,8 @@ export default function Booktable() {
   const handleTypeChange = (value) => {
     setTypeMode(value.target.value); // Update to extract the value from event
   };
-  const handleEndDateChange = (value) => {
-    setEnddate(value.target.value); // Update to extract the value from event
+  const handleStartDateChange = (value) => {
+    setStartDate(value.target.value); // Update to extract the value from event
   };
 
   return (
@@ -94,14 +94,14 @@ export default function Booktable() {
           <span className="flex my-10 h-full w-[80vw] items-center gap-10">
             <Input
               onChange={handleDateChange}
-              value={date}
+              value={EndDate}
               className="font-bold"
               type="text"
               label=" Start Date"
             />
             <Input
-              onChange={handleEndDateChange}
-              value={enddate}
+              onChange={handleStartDateChange}
+              value={StartDate}
               className="font-bold"
               type="text"
               label=" End Date"
