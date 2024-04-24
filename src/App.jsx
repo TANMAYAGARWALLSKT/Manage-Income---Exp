@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Components/Navbar";
 import Router from "./Config/Router";
 import { BackgroundGradientAnimation } from "../src/Components/ui/background-gradient-animation";
 

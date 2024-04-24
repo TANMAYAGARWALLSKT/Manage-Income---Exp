@@ -23,6 +23,7 @@ export default function Booktable() {
   const [typeMode, setTypeMode] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [enddate, setEnddate] = useState();
 
   const handfilter =
     (() => {
@@ -35,8 +36,10 @@ export default function Booktable() {
     setError(null);
     try {
       const selectData = collection(db, "Income");
-      let queryRef = query(selectData, where("Date", "==", date));
-
+      let queryRef = query(selectData, where("Date", "<=", date));
+      if (enddate) {
+        queryRef = query(queryRef, where("Date", ">=", enddate));
+      }
       if (paymentModeSelect) {
         queryRef = query(
           queryRef,
@@ -75,6 +78,9 @@ export default function Booktable() {
   const handleTypeChange = (value) => {
     setTypeMode(value.target.value); // Update to extract the value from event
   };
+  const handleEndDateChange = (value) => {
+    setEnddate(value.target.value); // Update to extract the value from event
+  };
 
   return (
     <div className="w-screen h-full flex justify-center">
@@ -91,9 +97,15 @@ export default function Booktable() {
               value={date}
               className="font-bold"
               type="text"
-              label="Date"
+              label=" Start Date"
             />
-
+            <Input
+              onChange={handleEndDateChange}
+              value={enddate}
+              className="font-bold"
+              type="text"
+              label=" End Date"
+            />
             <Select
               value={paymentModeSelect}
               onChange={handlePaymentModeChange}
