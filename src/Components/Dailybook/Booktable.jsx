@@ -13,7 +13,9 @@ import {
   Input,
   Button,
 } from "@nextui-org/react";
+
 import { PaymentModelist, typelist } from "../data";
+
 import ExportButton from "./Button_export";
 
 export default function Booktable() {
@@ -36,9 +38,9 @@ export default function Booktable() {
     setError(null);
     try {
       const selectData = collection(db, "Income");
-      let queryRef = query(selectData, where("Date", "<=", EndDate));
+      let queryRef = query(selectData, where("Date", "==", EndDate));
       if (StartDate) {
-        queryRef = query(queryRef, where("Date", ">=", StartDate));
+        queryRef = query(queryRef, where("Date", "<=", StartDate));
       }
       if (paymentModeSelect) {
         queryRef = query(
@@ -155,24 +157,30 @@ export default function Booktable() {
             <TableColumn className="text-2xl">Payment Mode</TableColumn>
             <TableColumn className="text-2xl">Notes</TableColumn>
           </TableHeader>
-          <TableBody>
+          <TableBody >
             {data.map((item) => (
-              <TableRow className="text-3xl" key={item.id}>
-                <TableCell className="text-2xl font-bold">
+              <TableRow className="text-3xl hover:bg-blue-700/10 rounded-3xl " key={item.id}>
+                <TableCell className="text-2xl rounded-3xl font-bold">
                   {item.Date}
                 </TableCell>
-                <TableCell className="text-2xl">{item.Model}</TableCell>
-                <TableCell className="text-2xl">{item.Amount}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">{item.Model}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">{item.Amount}</TableCell>
                 <TableCell
                   id="type"
-                  className={`text-2xl rounded-3xl h-[6vw] ${
-                    item.Type === "Expense" ? "bg-red-600" : "bg-green-600"
-                  } p-3 w-6`}
+                  className="p-5 text-2xl rounded-3xl w-10 h-[4vw] "
                 >
-                  {item.Type}
+                  <span
+                    className={` rounded-3xl h-[3vh]  ${
+                      item.Type === "Expense"
+                        ? "bg-red-600/60  "
+                        : "bg-green-600/60 "
+                    }  p-4 w-16`}
+                  >
+                    {item.Type}
+                  </span>
                 </TableCell>
-                <TableCell className="text-2xl">{item.PaymentMode}</TableCell>
-                <TableCell className="text-2xl">{item.Notes}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">{item.PaymentMode}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">{item.Notes}</TableCell>
               </TableRow>
             ))}
           </TableBody>

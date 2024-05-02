@@ -2,22 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 .Forst {
-  /* box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.076); */
-  border-radius: 20px;
-  /* background:transparent; */
-
-  background: #ffffff10;
-  backdrop-filter: blur(5px);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #141313;
 }
-tr{
+
+tr {
   width: 10px;
 }
-#type td{
+#type td {
   font-size: 20px;
   font-weight: 600;
   color: #fff;
   text-shadow: 0 0 1rem 0 rgba(60, 38, 38, 0.297);
 }
-::selection{
+::selection {
   background-color: rgba(250, 250, 250, 0.46);
 }

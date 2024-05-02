@@ -55,7 +55,7 @@ function Incometable() {
   };
 
   return (
-    <div className="flex flex-wrap pt-32 justify-center">
+    <div className="flex flex-wrap  pt-[10vh] justify-center">
       <div className="  flex flex-wrap  overflow-hidden  w-[80vw] h-[80vh] rounded-3xl Forst   text-zinc-100 ">
         <h1 className="font-bold text-green-600 text-[8vw] w-screen flex justify-center ">
           Add {type}
@@ -103,7 +103,8 @@ function Incometable() {
               type="number"
               id="Amount"
               name="Amount"
-              placeholder="Amount" className="w-[20vw]"
+              placeholder="Amount"
+              className="w-[20vw]"
               onChange={(e) => SetAmount(Number(e.target.value))}
             />
             <Input
@@ -111,7 +112,8 @@ function Incometable() {
               variant="bordered"
               size="lg"
               type="text"
-              placeholder="Note" className="w-[20vw]"
+              placeholder="Note"
+              className="w-[20vw]"
               onChange={(e) => SetNotes(e.target.value)}
             />
 
@@ -137,10 +139,8 @@ function Incometable() {
             </datalist>
 
             <Button
-             
               type="submit"
               size="lg"
-              
               onClick={() =>
                 toast({
                   title: "Successfully added.",

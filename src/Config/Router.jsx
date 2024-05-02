@@ -1,14 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Income from "../Components/Income/Income";
-import App from "../App";
+
 import Expense from "../Components/Expense/Expense";
 
 import Testdaily from "../Components/Dailybook/Testdaily";
 import Export from "../Components/Dailybook/Button_export";
+import Indexpage from "../Components/Home/Indexpage";
 function Router() {
   return (
     <Routes>
+      <Route path="/Home" element={<Indexpage />} />
+      <Route path="/" element={<Indexpage />} />
       <Route path="/income" element={<Income />} />
       <Route path="/Expenses" element={<Expense />} />
       <Route path="/Dailybook" element={<Testdaily />} />
