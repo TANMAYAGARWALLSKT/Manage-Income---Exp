@@ -34,7 +34,7 @@ function Expensetab() {
     };
 
     fetchData();
-  }, [date]); // Run the effect whenever date changes
+  }, [date]); 
 
   useEffect(() => {
     setDate(new Date().toLocaleDateString());

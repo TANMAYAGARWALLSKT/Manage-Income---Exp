@@ -4,7 +4,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { Card, CardBody } from "@nextui-org/react";
 
 function Expensetab() {
-  const [totalAmount, setTotalAmount] = useState(0); // State to hold the total amount
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const [date, setDate] = useState(new Date().toLocaleDateString());
   const typeData = "Income";
@@ -36,7 +36,7 @@ function Expensetab() {
     };
 
     fetchData();
-  }, [date]); // Run the effect whenever date changes
+  }, [date]);
 
   useEffect(() => {
     setDate(new Date().toLocaleDateString());
