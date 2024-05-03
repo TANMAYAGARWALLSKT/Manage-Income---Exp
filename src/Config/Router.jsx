@@ -7,9 +7,11 @@ import Expense from "../Components/Expense/Expense";
 import Testdaily from "../Components/Dailybook/Testdaily";
 import Export from "../Components/Dailybook/Button_export";
 import Indexpage from "../Components/Home/Indexpage";
+import Auth from "../Components/Home/auth/main";
 function Router() {
   return (
     <Routes>
+      <Route path="/User" element={<Auth />} />
       <Route path="/Home" element={<Indexpage />} />
       <Route path="/" element={<Indexpage />} />
       <Route path="/income" element={<Income />} />

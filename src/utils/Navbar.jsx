@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { User } from "@nextui-org/react";
 
 function Navbar() {
   const [date, setDate] = useState(new Date().toLocaleDateString());
@@ -16,13 +17,21 @@ function Navbar() {
     setDate(new Date().toLocaleDateString());
   }, []);
   return (
-    <div className="text-zinc-950  min-h-screen  w-[5vw]  absolute pr-5  pt-10   z-50 Forst    ">
+    <div className="text-zinc-950  pl-4 min-h-screen justify-center flex content-start flex-wrap  w-[5vw]  absolute pr-5   pt-10   z-50 Forst ">
+      <NavLink to="/User">
+        <User
+          className=" mb-10"
+          avatarProps={{
+            src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
+          }}
+        />
+      </NavLink>
       <NavLink to="/">
-        <h1 className=" text-white h-[3vh]  ml-4 text-[1.25rem] flex justify-center ">
+        <h1 className=" text-white h-[3vh  text-[1.25rem] flex justify-center ">
           {time}
         </h1>
 
-        <h1 className=" text-white   h-[3vh]   ml-4 text-sm flex justify-center   ">
+        <h1 className=" text-white   h-[3vh]    text-sm flex justify-center   ">
           {date}
         </h1>
       </NavLink>
