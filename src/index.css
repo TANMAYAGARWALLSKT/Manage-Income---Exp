@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 .Forst {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: #141313;
+  box-shadow: 0 0 2rem 0 rgba(76, 217, 236, 0.221);
+  backdrop-filter: blur(3px);
+  background-color: #ffffff1e;
 }
-
+.navbar {
+  background-color: #ffffff2c;
+}
 tr {
   width: 10px;
 }

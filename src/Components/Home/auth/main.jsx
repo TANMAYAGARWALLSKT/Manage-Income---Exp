@@ -11,16 +11,7 @@ export default function Auth() {
 
   return (
     <div className="bg-black w-screen h-screen flex flex-wrap gap-10 justify-center place-items-center">
-      <CanvasRevealEffect
-        className=""
-        animationSpeed={2}
-        containerClassName="bg-black opacity-70 "
-        colors={[
-          [236, 72, 150],
-          [232, 121, 149],
-        ]}
-        dotSize={2}
-      ></CanvasRevealEffect>
+     
       <span className=" absolute bg-black/10 backdrop-blur-xl shadow-lg shadow-yellow-500/5 rounded-3xl py-20 p-10 w-[20vw] gap-5   flex justify-center flex-wrap  content-center ">
         <Input
           label="Email"
