@@ -5,7 +5,7 @@ import { CanvasRevealEffect } from "./Components/ui/canvas-reveal-effect";
 
 function App() {
   return (
-    <div className=" min-h-screen h-full w-full min-w-screen">
+    <div className=" min-h-screen h-screen w-screen min-w-screen">
       <CanvasRevealEffect
         className=""
         animationSpeed={2}
