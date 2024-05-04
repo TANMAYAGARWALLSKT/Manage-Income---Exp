@@ -10,7 +10,7 @@ function Navbar() {
   );
   useEffect(() => {
     if (auth.currentUser) {
-      setUserPhotoURL(auth.currentUser.photoURL || userPhotoURL);
+      setUserPhotoURL(auth.currentUser.photoURL);
     } else {
       setUserPhotoURL("https://via.placeholder.com/150");
     }
