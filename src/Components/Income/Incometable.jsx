@@ -51,7 +51,7 @@ function Incometable() {
       SetNotes("");
       SetCompany("");
     } catch (error) {
-      console.error(error);
+      alert(error);
     }
   };
 
@@ -139,18 +139,7 @@ function Incometable() {
               <option value="Other">Other</option>
             </datalist>
 
-            <Button
-              type="submit"
-              size="lg"
-              onClick={() =>
-                toast({
-                  title: "Successfully added.",
-                  status: "Success",
-                  duration: 1000,
-                  isClosable: true,
-                })
-              }
-            >
+            <Button type="submit" size="lg">
               Submit
             </Button>
           </span>

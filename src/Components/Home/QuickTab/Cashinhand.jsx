@@ -11,6 +11,7 @@ function Cashinhand() {
 
   const typeData = "Expense";
   const typeData1 = "Income";
+  const Paymentmodefill = "Cash";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +20,8 @@ function Cashinhand() {
         const q = query(
           dataRef,
           where("Date", "==", date),
-          where("Type", "==", typeData)
+          where("Type", "==", typeData),
+          where("PaymentMode", "==", Paymentmodefill)
         );
         const querySnapshot = await getDocs(q);
 
@@ -45,7 +47,8 @@ function Cashinhand() {
         const q = query(
           dataRef,
           where("Date", "==", date),
-          where("Type", "==", typeData1)
+          where("Type", "==", typeData1),
+          where("PaymentMode", "==", Paymentmodefill)
         );
         const querySnapshot = await getDocs(q);
 

@@ -1,33 +1,54 @@
 import { React, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { User } from "@nextui-org/react";
+import { signOut } from "firebase/auth";
+import { auth } from "../Config/firebase";
 
 function Navbar() {
-  const [date, setDate] = useState(new Date().toLocaleDateString());
-  const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [userPhotoURL, setUserPhotoURL] = useState(
+    "https://via.placeholder.com/150" // Default profile picture URL
+  );
+  useEffect(() => {
+    if (auth.currentUser) {
+      setUserPhotoURL(auth.currentUser.photoURL || userPhotoURL);
+    } else {
+      setUserPhotoURL("https://via.placeholder.com/150");
+    }
+  }, []);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
+      setDate(new Date().toLocaleDateString());
     }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    setDate(new Date().toLocaleDateString());
-  }, []);
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="absolute h-screen navbar mr-10 rounded-full z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        <NavLink to="/User">
-          <User
-            accessKey="u"
-            className=""
-            avatarProps={{
-              src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-            }}
-          />
-        </NavLink>
+        {userPhotoURL && (
+          <NavLink to="/User">
+            <User
+              accessKey="u"
+              className=""
+              avatarProps={{
+                src: userPhotoURL,
+              }}
+            />
+          </NavLink>
+        )}
         <NavLink to="/">
           <h1 className=" text-white h-[3vh]  text-[1.25rem] flex justify-center ">
             {time}
@@ -70,6 +91,12 @@ function Navbar() {
         >
           <img className="w-8 m-2" src="/books.png" alt="" />
         </NavLink>
+        <img
+          onClick={logout}
+          className="w-10  absolute rounded-full  bottom-5"
+          src="./logout-svgrepo-com.svg"
+          alt=""
+        />
       </div>
     </div>
   );
