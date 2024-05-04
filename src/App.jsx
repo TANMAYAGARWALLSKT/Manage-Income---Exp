@@ -7,7 +7,7 @@ function App() {
   return (
     <div className=" min-h-screen h-screen w-screen min-w-screen">
       <CanvasRevealEffect
-        className=""
+        className=" h-screen w-screen"
         animationSpeed={2}
         containerClassName="bg- h-screen w-screen  absolute z-0 "
         colors={[
