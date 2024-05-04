@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "../../Config/firebase";
+import { db, auth } from "../../Config/firebase";
 import { Input } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 
@@ -41,6 +41,7 @@ function Incometable() {
         Date: date,
         Time: time,
         Type: type,
+        userid: auth?.currentUser?.uid,
       });
       alert("Successfully added");
       document.getElementById("Income").reset();

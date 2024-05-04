@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../Config/firebase";
+import { auth, db } from "../../Config/firebase";
 import {
   Table,
   TableHeader,
@@ -38,7 +38,11 @@ export default function Booktable() {
     setError(null);
     try {
       const selectData = collection(db, "Income");
-      let queryRef = query(selectData, where("Date", "==", EndDate));
+      let queryRef = query(
+        selectData,
+        where("Date", "==", EndDate),
+        where("userid", "==", auth?.currentUser?.uid)
+      );
       if (StartDate) {
         queryRef = query(queryRef, where("Date", "<=", StartDate));
       }
@@ -157,14 +161,21 @@ export default function Booktable() {
             <TableColumn className="text-2xl">Payment Mode</TableColumn>
             <TableColumn className="text-2xl">Notes</TableColumn>
           </TableHeader>
-          <TableBody >
+          <TableBody>
             {data.map((item) => (
-              <TableRow className="text-3xl hover:bg-blue-700/10 rounded-3xl " key={item.id}>
+              <TableRow
+                className="text-3xl hover:bg-blue-700/10 rounded-3xl "
+                key={item.id}
+              >
                 <TableCell className="text-2xl rounded-3xl font-bold">
                   {item.Date}
                 </TableCell>
-                <TableCell className="text-2xl rounded-3xl">{item.Model}</TableCell>
-                <TableCell className="text-2xl rounded-3xl">{item.Amount}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">
+                  {item.Model}
+                </TableCell>
+                <TableCell className="text-2xl rounded-3xl">
+                  {item.Amount}
+                </TableCell>
                 <TableCell
                   id="type"
                   className="p-5 text-2xl rounded-3xl w-10 h-[4vw] "
@@ -179,8 +190,12 @@ export default function Booktable() {
                     {item.Type}
                   </span>
                 </TableCell>
-                <TableCell className="text-2xl rounded-3xl">{item.PaymentMode}</TableCell>
-                <TableCell className="text-2xl rounded-3xl">{item.Notes}</TableCell>
+                <TableCell className="text-2xl rounded-3xl">
+                  {item.PaymentMode}
+                </TableCell>
+                <TableCell className="text-2xl rounded-3xl">
+                  {item.Notes}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

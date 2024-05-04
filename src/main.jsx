@@ -3,10 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import { ChakraProvider } from "@chakra-ui/react";
-import { NextUIProvider } from "@nextui-org/react";
 
-import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+import { NextUIProvider } from "@nextui-org/react";
 
 // NextUIProvider
 

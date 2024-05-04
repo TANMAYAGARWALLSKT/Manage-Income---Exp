@@ -13,8 +13,8 @@ function Router() {
     <Routes>
       <Route path="/User" element={<Auth />} />
       <Route path="/Home" element={<Indexpage />} />
-      <Route path="/" element={<Indexpage />} />
-      <Route path="/income" element={<Income />} />
+      <Route path="/" element={<Auth />} />
+      <Route path="/Income" element={<Income />} />
       <Route path="/Expenses" element={<Expense />} />
       <Route path="/Dailybook" element={<Testdaily />} />
       <Route path="/Export" element={<Export />} />

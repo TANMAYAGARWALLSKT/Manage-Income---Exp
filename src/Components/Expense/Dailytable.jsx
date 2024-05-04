@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "../../Config/firebase";
+import { auth, db } from "../../Config/firebase";
 import { Input, Button } from "@nextui-org/react";
-
 
 
 function Dailytable() {
@@ -41,6 +40,7 @@ function Dailytable() {
         Date: date,
         Time: time,
         Type: type,
+        userid: auth?.currentUser?.uid,
       });
 
       document.getElementById("Income").reset();
@@ -114,14 +114,6 @@ function Dailytable() {
               type="submit"
               size="lg"
               className="w-[22vw] h-20"
-              onClick={() =>
-                toast({
-                  title: "Successfully added.",
-                  status: "success",
-                  duration: 1000,
-                  isClosable: true,
-                })
-              }
             >
               Submit
             </Button>
