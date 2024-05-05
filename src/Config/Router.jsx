@@ -42,7 +42,14 @@ function Router() {
           </AuthReq>
         }
       />
-      <Route path="/" element={<Auth />} />
+      <Route
+        path="/"
+        element={
+          <AuthReq>
+            <Indexpage />
+          </AuthReq>
+        }
+      />
       <Route
         path="/Income"
         element={

@@ -1,14 +1,17 @@
 import React from "react";
-import { SparklesCore } from "../ui/sparkles";
-import Datadispaly from "./Datadispaly";
-// import Quicktab from "./QuickTab/Quicktab";
+
+import Incometab from "./QuickTab/Incometab";
+import Expensetab from "./QuickTab/Expensetab";
+import Cashinhand from "./QuickTab/Cashinhand";
+import Totalsale from "./QuickTab/Totalsale";
 
 function Indexpage() {
   return (
-    <div className="">
-     
-      <Datadispaly />
-     
+    <div className="flex justify-center gap-20 flex-wrap">
+      <Incometab />
+      <Expensetab />
+      <Cashinhand />
+      <Totalsale />
     </div>
   );
 }

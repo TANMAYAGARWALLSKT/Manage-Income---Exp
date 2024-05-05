@@ -34,7 +34,7 @@ export default function Auth() {
     authFunction(auth, email, password)
       .then((userCred) => {
         const user = userCred.user;
-        if (isLogin) navigate("/home");
+        if (isLogin) navigate("/");
         else alert("Account has been created successfully");
       })
       .catch((error) => {
@@ -47,6 +47,7 @@ export default function Auth() {
       await signInWithPopup(auth, provider);
       setUserPhotoURL(auth.currentUser.photoURL);
       console.log(auth.currentUser.photoURL);
+      navigate("/home");
     } catch (error) {
       console.error("Authentication error:", error.code, error.message);
     }

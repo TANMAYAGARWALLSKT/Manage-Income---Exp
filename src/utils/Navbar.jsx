@@ -54,7 +54,7 @@ function Navbar() {
           />
         </NavLink>
 
-        <NavLink to="/">
+        <NavLink to="/Home">
           <h1 className=" text-white h-[3vh]  text-[1.25rem] flex justify-center ">
             {time}
           </h1>
