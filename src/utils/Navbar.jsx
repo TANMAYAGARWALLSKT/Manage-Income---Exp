@@ -3,20 +3,15 @@ import { NavLink } from "react-router-dom";
 import { User } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../Config/firebase";
+// import { userPhotoURL } from "../Components/Home/auth/main";
+// import { auth } from "../Config/firebase";
 
 function Navbar() {
-  const [userPhotoURL, setUserPhotoURL] = useState(
-    "https://via.placeholder.com/150" // Default profile picture URL
-  );
-  useEffect(() => {
-    if (auth.currentUser) {
-      setUserPhotoURL(auth.currentUser.photoURL);
-    } else {
-      setUserPhotoURL("https://via.placeholder.com/150");
-    }
-  }, []);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [userPhotoURL, setUserPhotoURL] = useState(
+    "https://via.placeholder.com/150"
+  );
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -34,21 +29,31 @@ function Navbar() {
       console.log(error);
     }
   };
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserPhotoURL(user.photoURL);
+      } else {
+        setUserPhotoURL("https://via.placeholder.com/150");
+      }
+    });
+  });
+
+  // const userPhotoURL = auth.currentUser.photoURL;
 
   return (
     <div className="absolute h-screen navbar mr-10 rounded-full z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        {userPhotoURL && (
-          <NavLink to="/User">
-            <User
-              accessKey="u"
-              className=""
-              avatarProps={{
-                src: userPhotoURL,
-              }}
-            />
-          </NavLink>
-        )}
+        <NavLink to="/User">
+          <User
+            accessKey="u"
+            className=""
+            avatarProps={{
+              src: userPhotoURL,
+            }}
+          />
+        </NavLink>
+
         <NavLink to="/">
           <h1 className=" text-white h-[3vh]  text-[1.25rem] flex justify-center ">
             {time}

@@ -14,6 +14,9 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [UserPhotoURL, setUserPhotoURL] = useState(
+    " https://via.placeholder.com/150" // Default profile picture URL
+  );
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -38,12 +41,12 @@ export default function Auth() {
         console.log(error);
       });
   };
-
-  const handleGoogleSignIn = async () => {
+  const signInWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      console.log(auth);
+      setUserPhotoURL(auth.currentUser.photoURL);
+      console.log(auth.currentUser.photoURL);
     } catch (error) {
       console.error("Authentication error:", error.code, error.message);
     }
@@ -85,7 +88,7 @@ export default function Auth() {
           Sign Up
         </Button>
         <Button
-          onClick={handleGoogleSignIn}
+          onClick={signInWithGoogle}
           className="bg-zinc-200 text-red-600 font-semibold"
         >
           <svg
