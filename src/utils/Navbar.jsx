@@ -64,36 +64,33 @@ function Navbar() {
           </h1>
         </NavLink>
         <NavLink
-          className="w-[5vw] flex  justify-center"
           accessKey="p"
           className={(e) => {
             return e.isActive
-              ? "  opacity-100 bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1 w-full  "
-              : "   opacity-100     p-1 ";
+              ? "  opacity-100 w-[5vw]    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
+              : "   opacity-100 w-[5vw] flex  justify-center     p-1 ";
           }}
           to="./income"
         >
           <img className="w-10" src="/profit.svg" alt="" />
         </NavLink>
         <NavLink
-          className="w-[5vw] flex  justify-center"
           accessKey="l"
           className={(e) => {
             return e.isActive
-              ? "  opacity-100 bg-red-500/30  flex justify-center content-center border-red-800  border-2 p-1 w-full  "
-              : "   opacity-100     p-1 ";
+              ? "  opacity-100 bg-red-500/30 w-[5vw]  flex justify-center content-center border-red-800  border-2 p-1  "
+              : "   opacity-100 flex  justify-center  w-[5vw]    p-1 ";
           }}
           to="./Expenses"
         >
           <img className="w-10" src="/expense.svg" alt="" />
         </NavLink>
         <NavLink
-          className="w-[5vw] flex  justify-center"
           accessKey="b"
           className={(e) => {
             return e.isActive
               ? "  opacity-100 bg-blue-500/30  flex justify-center content-center border-blue-800  border-2 p-1 w-full  "
-              : "   opacity-100     p-1  ";
+              : "   opacity-100  flex  justify-center  w-[5vw]     p-1  ";
           }}
           to="./DailyBook"
         >
