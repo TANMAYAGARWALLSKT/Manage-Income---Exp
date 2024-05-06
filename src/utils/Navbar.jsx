@@ -42,9 +42,9 @@ function Navbar() {
   // const userPhotoURL = auth.currentUser.photoURL;
 
   return (
-    <div className="absolute h-screen navbar mr-10 rounded-full z-50">
+    <div className="absolute h-screen navbar  rounded-full z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        <NavLink to="/User">
+        <NavLink className="w-[5vw] flex  justify-center" to="/User">
           <User
             accessKey="u"
             className=""
@@ -55,15 +55,16 @@ function Navbar() {
         </NavLink>
 
         <NavLink to="/Home">
-          <h1 className=" text-white h-[3vh]  text-[1.25rem] flex justify-center ">
+          <h1 className=" text-white w-[5vw]  h-[3vh]  text-[1.25rem] flex justify-center ">
             {time}
           </h1>
 
-          <h1 className=" text-white   h-[3vh]    text-sm flex justify-center   ">
+          <h1 className=" text-white w-[5vw]    h-[3vh]    text-sm flex justify-center   ">
             {date}
           </h1>
         </NavLink>
         <NavLink
+          className="w-[5vw] flex  justify-center"
           accessKey="p"
           className={(e) => {
             return e.isActive
@@ -75,6 +76,7 @@ function Navbar() {
           <img className="w-10" src="/profit.svg" alt="" />
         </NavLink>
         <NavLink
+          className="w-[5vw] flex  justify-center"
           accessKey="l"
           className={(e) => {
             return e.isActive
@@ -86,6 +88,7 @@ function Navbar() {
           <img className="w-10" src="/expense.svg" alt="" />
         </NavLink>
         <NavLink
+          className="w-[5vw] flex  justify-center"
           accessKey="b"
           className={(e) => {
             return e.isActive

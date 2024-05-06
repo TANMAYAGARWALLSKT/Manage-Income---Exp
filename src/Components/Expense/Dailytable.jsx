@@ -3,7 +3,6 @@ import { addDoc, collection, getDocs } from "firebase/firestore";
 import { auth, db } from "../../Config/firebase";
 import { Input, Button } from "@nextui-org/react";
 
-
 function Dailytable() {
   const [Model, SetModel] = useState("N/A");
   const [Amount, SetAmount] = useState("0");
@@ -57,7 +56,7 @@ function Dailytable() {
   };
 
   return (
-    <div className="flex flex-wrap justify-center pt-[10vh]">
+    <div className="flex  flex-wrap justify-center pt-[10vh]">
       <div className="flex flex-wrap  overflow-hidden  w-[80vw] h-[80vh] rounded-3xl Forst   text-zinc-100 ">
         <h1 className="font-bold text-red-600 text-[8vw] w-screen flex justify-center ">
           Add {type}
