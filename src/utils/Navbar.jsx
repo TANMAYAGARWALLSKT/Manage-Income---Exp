@@ -39,24 +39,24 @@ function Navbar() {
       }
     });
   });
-  const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
+  // const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
 
-  const toggleProfile = () => {
-    setShowProfile(!showProfile); // Toggle the value of showProfile
-    // If showProfile is set to true, set a timeout to hide the Profile component after 10 seconds
-    if (!showProfile) {
-      setTimeout(() => {
-        setShowProfile(false);
-      }, 3000); // 10000 milliseconds = 10 seconds
-    }
-  };
+  // const toggleProfile = () => {
+  //   setShowProfile(!showProfile); // Toggle the value of showProfile
+  //   // If showProfile is set to true, set a timeout to hide the Profile component after 10 seconds
+  //   if (!showProfile) {
+  //     setTimeout(() => {
+  //       setShowProfile(false);
+  //     }, 3000); // 10000 milliseconds = 10 seconds
+  //   }
+  // };
 
   return (
-    <div className="absolute  w-screen h-screen    z-50">
+    <div className="absolute h-screen navbar  rounded-full z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
         <NavLink
           className="w-[5vw] flex justify-center"
-          onClick={toggleProfile}
+          // onClick={toggleProfile}
         >
           <User
             accessKey="u"
@@ -66,7 +66,7 @@ function Navbar() {
             }}
           />
         </NavLink>
-        {showProfile && <LoginInfo />}
+        {/* {showProfile && <LoginInfo />} */}
         {/* Render Profile component if showProfile is true */}
         <NavLink to="/Home">
           <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">

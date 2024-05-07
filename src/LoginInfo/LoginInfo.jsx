@@ -28,7 +28,7 @@ function LoginInfo() {
     });
   });
   return (
-    <div className="flex absolute z-50 bg-black/80 w-screen   animate-[Op_3s_ease-in-out]  right-0 top-0  h-screen   flex-wrap justify-center  content-center">
+    <div className="flex absolute z-0 bg-black/80 w-screen   animate-[Op_3s_ease-in-out]  right-0 top-0  h-screen   flex-wrap justify-center  content-center">
       <div className="flex p-10 gap-10 w-[40vw] relative  flex-wrap justify-center   Forst noto-sans text-white">
         <img
           src={userPhotoURL}

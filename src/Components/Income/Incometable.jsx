@@ -57,9 +57,9 @@ function Incometable() {
   };
 
   return (
-    <div className=" flex justify-center flex-wrap">
+    <div className=" flex justify-center relative  flex-wrap">
       <h1 className=" text-green-500/60 noto-sans text-[8vw] w-screen flex justify-center ">
-       Add {type}
+        Add {type}
       </h1>
       {/* <div className="  flex flex-wrap     overflow-hidden   w-[50vw] h-full rounded-3xl Forst   text-zinc-100 "> */}
       <form
