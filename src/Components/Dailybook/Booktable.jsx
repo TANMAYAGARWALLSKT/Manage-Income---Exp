@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "../../Config/firebase";
 import {
@@ -12,7 +12,9 @@ import {
   SelectItem,
   Input,
   Button,
+  Spinner,
 } from "@nextui-org/react";
+// import { CanvasRevealEffect } from "../ui/canvas-reveal-effect";
 
 import { PaymentModelist, typelist } from "../data";
 
@@ -20,41 +22,37 @@ import ExportButton from "./Button_export";
 
 export default function Booktable() {
   const [data, setData] = useState([]);
-  const [EndDate, setDate] = useState(new Date().toLocaleDateString());
-  const [paymentModeSelect, setPaymentModeSelect] = useState(null);
-  const [typeMode, setTypeMode] = useState(null);
+  const [filters, setFilters] = useState({
+    EndDate: new Date().toLocaleDateString(),
+    StartDate: new Date().toLocaleDateString(),
+    paymentModeSelect: null,
+    typeMode: null,
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [StartDate, setStartDate] = useState();
 
-  const handfilter =
-    (() => {
-      fetchDataAndFilter();
-    },
-    []); // Fetch data initially on component mount
-
-  const fetchDataAndFilter = async () => {
+  const fetchDataAndFilter = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
       const selectData = collection(db, "Income");
       let queryRef = query(
         selectData,
-        where("Date", "==", EndDate),
+        where("Date", ">=", filters.EndDate),
         where("userid", "==", auth?.currentUser?.uid)
       );
-      if (StartDate) {
-        queryRef = query(queryRef, where("Date", "<=", StartDate));
+      if (filters.StartDate) {
+        queryRef = query(queryRef, where("Date", "<=", filters.StartDate));
       }
-      if (paymentModeSelect) {
+      if (filters.paymentModeSelect) {
         queryRef = query(
           queryRef,
-          where("PaymentMode", "==", paymentModeSelect)
+          where("PaymentMode", "==", filters.paymentModeSelect)
         );
       }
 
-      if (typeMode) {
-        queryRef = query(queryRef, where("Type", "==", typeMode));
+      if (filters.typeMode) {
+        queryRef = query(queryRef, where("Type", "==", filters.typeMode));
       }
 
       const querySnapshot = await getDocs(queryRef);
@@ -71,50 +69,44 @@ export default function Booktable() {
     } finally {
       setLoading(false);
     }
+  }, [filters]);
+
+  const handleFilterSubmit = (e) => {
+    e.preventDefault();
+    fetchDataAndFilter();
   };
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value);
-  };
-
-  const handlePaymentModeChange = (value) => {
-    setPaymentModeSelect(value.target.value); // Update to extract the value from event
-  };
-
-  const handleTypeChange = (value) => {
-    setTypeMode(value.target.value); // Update to extract the value from event
-  };
-  const handleStartDateChange = (value) => {
-    setStartDate(value.target.value); // Update to extract the value from event
+  const handleFilterChange = (key, value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [key]: value.target.value,
+    }));
   };
 
   return (
     <div className="w-screen h-full flex justify-center">
-      <div className="text-3xl h-full text-white">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            fetchDataAndFilter();
-          }}
-        >
+      <div className="text-3xl h-full  noto-sans text-white">
+        <form onSubmit={handleFilterSubmit}>
           <span className="flex my-10 h-full w-[80vw] items-center gap-10">
             <Input
-              onChange={handleDateChange}
-              value={EndDate}
+              onChange={(e) => handleFilterChange("EndDate", e)}
+              value={filters.EndDate}
               className="font-bold"
               type="text"
               label=" Start Date"
             />
             <Input
-              onChange={handleStartDateChange}
-              value={StartDate}
+              onChange={(e) => handleFilterChange("StartDate", e)}
+              value={filters.StartDate}
               className="font-bold"
               type="text"
               label=" End Date"
             />
             <Select
-              value={paymentModeSelect}
-              onChange={handlePaymentModeChange}
+              value={filters.paymentModeSelect}
+              onChange={(value) =>
+                handleFilterChange("paymentModeSelect", value)
+              }
               items={PaymentModelist}
               label="Payment Mode"
               placeholder="Select a Payment Mode"
@@ -124,8 +116,8 @@ export default function Booktable() {
               {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
             </Select>
             <Select
-              value={typeMode}
-              onChange={handleTypeChange}
+              value={filters.typeMode}
+              onChange={(value) => handleFilterChange("typeMode", value)}
               items={typelist}
               label="Type"
               placeholder="Select a Type"
@@ -136,18 +128,15 @@ export default function Booktable() {
             </Select>
             <Button
               type="submit"
-              className="text-zinc-100 font-bold w-[6vw] p-8 h-[4vh] text-2xl"
+              className="text-zinc-100 font-bold w-[6vw] p-6 h-[4vh] text-2xl"
               color="success"
-              onClick={handfilter}
               disabled={loading}
             >
-              {loading ? "Loading..." : "Filter"}
+              {loading ? <Spinner /> : "Filter"}
             </Button>
           </span>
         </form>
-
         {error && <p className="text-red-500">{error}</p>}
-
         <Table
           variant="ghost"
           className="w-[80vw] h-full text-3xl"
@@ -200,7 +189,7 @@ export default function Booktable() {
             ))}
           </TableBody>
         </Table>
-        <ExportButton data={data} />
+        {data.length > 0 && <ExportButton data={data} />}
       </div>
     </div>
   );

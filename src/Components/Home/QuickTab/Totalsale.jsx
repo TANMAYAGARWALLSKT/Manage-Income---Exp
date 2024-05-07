@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../Config/firebase";
+import { db, auth } from "../../../Config/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Card, CardBody } from "@nextui-org/react";
 
@@ -16,7 +16,8 @@ function Totalsale() {
         const q = query(
           dataRef,
           where("Date", "==", date),
-          where("Type", "==", typeData)
+          where("Type", "==", typeData),
+          where("userid", "==", auth?.currentUser?.uid)
         );
         const querySnapshot = await getDocs(q);
 
@@ -50,7 +51,7 @@ function Totalsale() {
             <div className="flex justify-between items-start">
               <div className="flex flex-col gap-0">
                 <h3 className="text-green-500/80 text-4xl font-bold">
-                 Total Sale
+                  Total Sale
                 </h3>
 
                 <h1 className=" text-5xl font-medium mt-10">+ {totalAmount}</h1>

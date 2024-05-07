@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./utils/Navbar";
 import Router from "./Config/Router";
 import { CanvasRevealEffect } from "./Components/ui/canvas-reveal-effect";
+import { auth } from "./Config/firebase";
 
 function App() {
-  return (
-    <div className=" min-h-screen h-screen w-screen min-w-screen">
-      <CanvasRevealEffect
-        className="h-screen w-screen"
-        animationSpeed={2}
-        containerClassName="bg- h-screen w-screen  absolute z-0 "
-        colors={[
-          [255, 191, 0],
-          [255, 255, 240],
-        ]}
-        dotSize={2}
-      ></CanvasRevealEffect>
+  const [user, setUser] = useState(null);
 
-      <Navbar />
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      unsubscribe();
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  const handleBeforeUnload = () => {
+    if (auth.currentUser) {
+      // Sign out the user before the page is unloaded
+      auth.signOut();
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[rgb(17,17,21)] h-screen w-screen min-w-screen">
+     
+      {user ? <Navbar /> : null}
       <Router />
     </div>
   );

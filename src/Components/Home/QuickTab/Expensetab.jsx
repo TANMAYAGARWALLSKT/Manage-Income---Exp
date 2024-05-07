@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../../Config/firebase";
+import { db, auth } from "../../../Config/firebase";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { Card, CardBody } from "@nextui-org/react";
 
@@ -16,7 +16,8 @@ function Expensetab() {
         const q = query(
           dataRef,
           where("Date", "==", date),
-          where("Type", "==", typeData)
+          where("Type", "==", typeData),
+          where("userid", "==", auth?.currentUser?.uid)
         );
         const querySnapshot = await getDocs(q);
 
@@ -34,7 +35,7 @@ function Expensetab() {
     };
 
     fetchData();
-  }, [date]); 
+  }, [date]);
 
   useEffect(() => {
     setDate(new Date().toLocaleDateString());

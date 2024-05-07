@@ -44,7 +44,7 @@ function Navbar() {
   return (
     <div className="absolute h-screen navbar  rounded-full z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        <NavLink className="w-[5vw] flex  justify-center" to="/User">
+        <NavLink className="w-[5vw] flex  justify-center" to="/UserInfo">
           <User
             accessKey="u"
             className=""
@@ -55,11 +55,11 @@ function Navbar() {
         </NavLink>
 
         <NavLink to="/Home">
-          <h1 className=" text-white w-[5vw]  h-[3vh]  text-[1.25rem] flex justify-center ">
+          <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
             {time}
           </h1>
 
-          <h1 className=" text-white w-[5vw]    h-[3vh]    text-sm flex justify-center   ">
+          <h1 className=" text-white w-[5vw] noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
             {date}
           </h1>
         </NavLink>

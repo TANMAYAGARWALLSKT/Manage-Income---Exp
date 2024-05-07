@@ -7,6 +7,7 @@ import Export from "../Components/Dailybook/Button_export";
 import Indexpage from "../Components/Home/Indexpage";
 import Auth from "../Components/Home/auth/main";
 import { auth } from "./firebase";
+import LoginInfo from "../LoginInfo/LoginInfo";
 
 function Router() {
   const [currentAuth, setCurrentAuth] = useState(false);
@@ -71,6 +72,14 @@ function Router() {
         element={
           <AuthReq>
             <Testdaily />
+          </AuthReq>
+        }
+      />
+      <Route
+        path="/UserInfo"
+        element={
+          <AuthReq>
+            <LoginInfo />
           </AuthReq>
         }
       />

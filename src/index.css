@@ -3,11 +3,13 @@
 @tailwind utilities;
 .Forst {
   box-shadow: 0 0 2rem 0 rgba(76, 217, 236, 0.221);
-  backdrop-filter: blur(3px);
-  background-color: #ffffff1e;
+  backdrop-filter: blur(1px);
+  background-color: #6ca8af0e;
+
+  font-family: "Reddit Mono", monospace;
 }
 .navbar {
-  background-color: #ffffff2c;
+  background-color: #2e77982c;
 }
 tr {
   width: 10px;
@@ -20,4 +22,10 @@ tr {
 }
 ::selection {
   background-color: rgba(250, 250, 250, 0.46);
+}
+
+.noto-sans {
+  font-family: "Reddit Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }

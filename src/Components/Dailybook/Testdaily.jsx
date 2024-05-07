@@ -1,6 +1,7 @@
 import React from "react";
 import { SparklesCore } from "../ui/sparkles";
 import Booktable from "./Booktable.jsx";
+// import { CanvasRevealEffect } from "../ui/canvas-reveal-effect.js";
 
 export default function Testdaily() {
   return (
@@ -13,6 +14,8 @@ export default function Testdaily() {
         className="w-full h-full absolute z-0"
         particleColor="#FFFFFF"
       />
+     
+
       <Booktable />
     </div>
   );

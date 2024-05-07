@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { CanvasRevealEffect } from "../../ui/canvas-reveal-effect";
 
 export default function Auth() {
   const [isVisible, setIsVisible] = useState(false);
@@ -55,6 +56,16 @@ export default function Auth() {
 
   return (
     <div className="bg-black w-screen h-screen flex flex-wrap gap-10 justify-center place-items-center">
+      <CanvasRevealEffect
+        className="h-screen w-screen"
+        animationSpeed={2}
+        containerClassName="bg- h-screen w-screen  absolute z-0 "
+        colors={[
+          [255, 191, 0],
+          [255, 255, 240],
+        ]}
+        dotSize={2}
+      ></CanvasRevealEffect>
       <span className="absolute bg-black/10 backdrop-blur-xl shadow-lg shadow-yellow-500/5 rounded-3xl px-10 py-16 gap-5 flex justify-center flex-wrap content-center">
         <form
           className="flex justify-center content-center gap-10 flex-wrap w-[20vw]"
