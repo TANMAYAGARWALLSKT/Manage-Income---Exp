@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { User } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../Config/firebase";
+import LoginInfo from "../LoginInfo/LoginInfo";
 // import { userPhotoURL } from "../Components/Home/auth/main";
 // import { auth } from "../Config/firebase";
 
@@ -38,13 +39,25 @@ function Navbar() {
       }
     });
   });
+  const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
 
-  // const userPhotoURL = auth.currentUser.photoURL;
+  const toggleProfile = () => {
+    setShowProfile(!showProfile); // Toggle the value of showProfile
+    // If showProfile is set to true, set a timeout to hide the Profile component after 10 seconds
+    if (!showProfile) {
+      setTimeout(() => {
+        setShowProfile(false);
+      }, 3000); // 10000 milliseconds = 10 seconds
+    }
+  };
 
   return (
-    <div className="absolute h-screen navbar  rounded-full z-50">
+    <div className="absolute  w-screen h-screen    z-50">
       <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        <NavLink className="w-[5vw] flex  justify-center" to="/UserInfo">
+        <NavLink
+          className="w-[5vw] flex justify-center"
+          onClick={toggleProfile}
+        >
           <User
             accessKey="u"
             className=""
@@ -53,7 +66,8 @@ function Navbar() {
             }}
           />
         </NavLink>
-
+        {showProfile && <LoginInfo />}
+        {/* Render Profile component if showProfile is true */}
         <NavLink to="/Home">
           <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
             {time}

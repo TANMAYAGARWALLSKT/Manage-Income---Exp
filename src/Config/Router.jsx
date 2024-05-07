@@ -43,6 +43,7 @@ function Router() {
           </AuthReq>
         }
       />
+
       <Route
         path="/"
         element={
@@ -59,6 +60,7 @@ function Router() {
           </AuthReq>
         }
       />
+
       <Route
         path="/Expenses"
         element={
@@ -67,6 +69,7 @@ function Router() {
           </AuthReq>
         }
       />
+
       <Route
         path="/Dailybook"
         element={
@@ -75,19 +78,12 @@ function Router() {
           </AuthReq>
         }
       />
+
       <Route
         path="/UserInfo"
         element={
           <AuthReq>
             <LoginInfo />
-          </AuthReq>
-        }
-      />
-      <Route
-        path="/Export"
-        element={
-          <AuthReq>
-            <Export />
           </AuthReq>
         }
       />
