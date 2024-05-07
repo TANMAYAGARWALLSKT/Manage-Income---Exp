@@ -15,6 +15,7 @@ function LoginInfo() {
       console.log(error);
     }
   };
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -28,20 +29,18 @@ function LoginInfo() {
     });
   });
   return (
-    <div className="flex absolute z-0 bg-black/80 w-screen   animate-[Op_3s_ease-in-out]  right-0 top-0  h-screen   flex-wrap justify-center  content-center">
-      <div className="flex p-10 gap-10 w-[40vw] relative  flex-wrap justify-center   Forst noto-sans text-white">
+    <div className="flex top-0 w-screen animate-[Op_3s_ease-in-out_infinite] bg-black/60 h-screen absolute  left-0 flex-wrap justify-center  content-center">
+      <div className="flex p-10 gap-10 w-[40vw] h-[40vh] flex-wrap justify-center    Forst noto-sans text-white">
         <img
           src={userPhotoURL}
           alt="user"
           className=" rounded-3xl  w-[10vw] h-[10vw] "
         />
-        <span className="flex justify-center text-center gap-10 flex-wrap">
-          <h1 className=" text-xl">Name: {displayName}</h1>
-          <h1 className="flex relative top-[-20%] justify-center w-[40vw]">
-            Email-Id : {email}
-          </h1>
-          <Button className=" relative top-[-20%]" onClick={logout}>
-            Sign Out
+        <span className="flex justify-between flex-wrap content-center">
+          <h1 className="w-[20vw]">Name: {displayName}</h1>
+          <h1 className="w-[20vw]">{email}</h1>
+          <Button type="submit" size="lg" onClick={logout}>
+            Sign out
           </Button>
         </span>
       </div>

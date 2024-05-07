@@ -32,19 +32,19 @@ tr {
 @keyframes Op {
   0% {
     opacity: 0;
-    z-index: 0;
+  
   }
   40% {
     opacity: 1;
-    z-index:100;
+ 
   }
   80% {
     opacity: 1;
-    z-index:100;
+    /* z-index:100; */
   }
   
   100% {
     opacity: 0;
-    z-index:-10;
+    /* z-index:-10; */
   }
 }
