@@ -4,6 +4,7 @@ import { User } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../Config/firebase";
 import LoginInfo from "../LoginInfo/LoginInfo";
+// import { Tooltip, Button } from "@nextui-org/kbd";
 // import { userPhotoURL } from "../Components/Home/auth/main";
 // import { auth } from "../Config/firebase";
 
@@ -88,6 +89,7 @@ function Navbar() {
         >
           <img className="w-10" src="/profit.svg" alt="" />
         </NavLink>
+
         <NavLink
           accessKey="l"
           className={(e) => {
