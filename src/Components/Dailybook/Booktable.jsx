@@ -1,6 +1,14 @@
 import React, { useState, useCallback } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { auth, db } from "../../Config/firebase";
+
 import {
   Table,
   TableHeader,
@@ -14,11 +22,11 @@ import {
   Button,
   Spinner,
 } from "@nextui-org/react";
-// import { CanvasRevealEffect } from "../ui/canvas-reveal-effect";
-
 import { PaymentModelist, typelist } from "../data";
-
 import ExportButton from "./Button_export";
+
+import { DeleteIcon } from "./DeleteIcon.jsx";
+import { EditIcon } from "./EditIcon.jsx";
 
 export default function Booktable() {
   const [data, setData] = useState([]);
@@ -82,7 +90,18 @@ export default function Booktable() {
       [key]: value.target.value,
     }));
   };
-
+  const deleteDocument = async (id) => {
+    try {
+      const docRef = doc(db, "Income", id.toString());
+      await deleteDoc(docRef);
+      console.log(`Document with ID ${id} has been deleted.`);
+      // Optionally, refetch the data after deleting
+      fetchDataAndFilter();
+    } catch (error) {
+      console.error("Error deleting document:", error);
+    }
+  };
+  
   return (
     <div className="w-screen h-full flex justify-center">
       <div className="text-3xl h-full  noto-sans text-white">
@@ -149,9 +168,10 @@ export default function Booktable() {
             <TableColumn className="text-2xl">Type</TableColumn>
             <TableColumn className="text-2xl">Payment Mode</TableColumn>
             <TableColumn className="text-2xl">Notes</TableColumn>
+            <TableColumn className="text-xl w-4"></TableColumn>
           </TableHeader>
           <TableBody>
-            {data.map((item) => (
+            {data.map((item, index) => (
               <TableRow
                 className="text-3xl hover:bg-blue-700/10 rounded-3xl "
                 key={item.id}
@@ -184,6 +204,13 @@ export default function Booktable() {
                 </TableCell>
                 <TableCell className="text-2xl rounded-3xl">
                   {item.Notes}
+                </TableCell>
+                
+                <TableCell
+                  onClick={() => deleteDocument(item.id)}
+                  className="text-2xl  hover:bg-green-500    rounded-3xl"
+                >
+                  <DeleteIcon />
                 </TableCell>
               </TableRow>
             ))}
