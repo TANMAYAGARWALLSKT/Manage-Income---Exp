@@ -5,7 +5,7 @@ import { Input, Button } from "@nextui-org/react";
 
 function Incometable() {
   const [Model, SetModel] = useState("");
-  const [Amount, SetAmount] = useState("0");
+  const [Amount, SetAmount] = useState("");
   const [PaymentMode, SetPaymentMode] = useState("");
   const [Notes, SetNotes] = useState("");
   const [Company, SetCompany] = useState("");
@@ -30,26 +30,22 @@ function Incometable() {
     e.preventDefault();
     try {
       await addDoc(collection(db, "Income"), {
+        userid: auth?.currentUser?.uid,
+        Model: Model,
         Amount: Amount,
+        PaymentMode: PaymentMode,
         Company: Company,
         Notes: Notes,
-        PaymentMode: PaymentMode,
-        Model: Model,
         Date: date,
         Time: time,
         Type: type,
-        userid: auth?.currentUser?.uid,
       });
       alert("Successfully added");
-
-      // Reset form fields after successful submission
       SetModel("");
-      SetAmount("0");
+      SetAmount("");
       SetPaymentMode("");
       SetNotes("");
-      SetCompany("");
-
-      // Clear the form using the ref
+      SetCompany("");` `
       formRef.current.reset();
     } catch (error) {
       console.error(error);
@@ -57,8 +53,8 @@ function Incometable() {
   };
 
   return (
-    <div className="flex justify-center relative flex-wrap">
-      <h1 className="text-green-500/60 noto-sans text-[8vw] w-screen flex justify-center">
+    <div className="flex justify-center w-auto h-auto relative flex-wrap">
+      <h1 className="text-green-500/60 noto-sans text-[8vw] w-auto h-auto flex-wrap flex justify-center">
         Add {type}
       </h1>
 
@@ -68,7 +64,7 @@ function Incometable() {
         className="Forst w-[80vw] rounded-3xl py-32 px-10"
         onSubmit={handleInput}
       >
-        <span className="flex flex-wrap w-full justify-center content-center gap-20">
+        <span className="flex w-auto h-auto h-min-[100vh] flex-wrap justify-center content-center gap-20">
           <Input
             isRequired
             variant="blacked"
