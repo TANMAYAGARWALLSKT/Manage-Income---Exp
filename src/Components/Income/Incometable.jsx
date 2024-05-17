@@ -45,7 +45,8 @@ function Incometable() {
       SetAmount("");
       SetPaymentMode("");
       SetNotes("");
-      SetCompany("");` `
+      SetCompany("");
+      ` `;
       formRef.current.reset();
     } catch (error) {
       console.error(error);
@@ -79,25 +80,35 @@ function Incometable() {
           <Input
             isRequired
             variant="blacked"
-            label="Payment Mode"
+            label=" Payment Mode"
             size="lg"
             type="text"
+            id="Payment Mode"
+            name="Payment Mode"
+            placeholder="Payment Mode"
+            list="payment-options"
+            className=" w-[20vw]"
             value={PaymentMode}
             onChange={(e) => SetPaymentMode(e.target.value)}
-            placeholder="Payment Mode"
-            className="w-[20vw]"
-          />
+          >
+            {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
+          </Input>
           <Input
             isRequired
             variant="blacked"
-            label="Company Name"
+            label=" Company Name"
             size="lg"
             type="text"
+            id="company"
+            name="company"
+            placeholder="Enter Phone Company"
+            list="phone-companies"
+            className=" w-[20vw]"
             value={Company}
             onChange={(e) => SetCompany(e.target.value)}
-            placeholder="Enter Phone Company"
-            className="w-[20vw]"
-          />
+          >
+            {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
+          </Input>
           <Input
             isRequired
             variant="blacked"
@@ -122,6 +133,26 @@ function Incometable() {
           <Button type="submit" className="bg-black w-[20vw]" size="lg">
             Submit
           </Button>
+          <datalist id="payment-options">
+            <option value="UPI">UPI</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Cash">Cash</option>
+            <option value="Due">Due</option>
+            <option value="Paid">Paid</option>
+            <option value="Bajaj">Bajaj</option>
+            <option value="Other">Others</option>
+          </datalist>
+          <datalist id="phone-companies">
+            <option value="Apple">Apple</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Realme">Realme</option>
+            <option value="Vivo">Vivo</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="Mi">Mi</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Oppo">Oppo</option>
+            <option value="Other">Other</option>
+          </datalist>
         </span>
       </form>
     </div>

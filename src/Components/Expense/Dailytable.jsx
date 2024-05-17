@@ -101,9 +101,9 @@ function Dailytable() {
             id="payment-mode"
             name="payment_mode"
             size="lg"
+            value={PaymentMode}
             placeholder="Enter Payment Mode"
             list="payment-options"
-            value={PaymentMode} // Set the value prop for controlled input
             onChange={(e) => SetPaymentMode(e.target.value)}
           />
           <datalist id="payment-options">
