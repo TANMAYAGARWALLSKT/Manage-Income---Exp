@@ -14,8 +14,7 @@ function Indexpage() {
       <CanvasRevealEffect
         className="h-full w-full"
         animationSpeed={2}
-        containerClassName="bg- h-auto min-w-screen min-h-screen
-         w-auto  top-0 absolute z-0 "
+        containerClassName="w-full h-full top-0 absolute z-0 "
         colors={[
           [255, 191, 0],
           [255, 255, 240],
