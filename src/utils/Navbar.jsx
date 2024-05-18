@@ -69,11 +69,11 @@ function Navbar() {
           {showProfile && <LoginInfo />}
           {/* Render Profile component if showProfile is true */}
           <NavLink to="/Home">
-            <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
+            <h1 className=" text-white w-20 noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
               {time}
             </h1>
 
-            <h1 className=" text-white w-[5vw] noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
+            <h1 className=" text-white w-20 noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
               {date}
             </h1>
           </NavLink>
@@ -81,8 +81,8 @@ function Navbar() {
             accessKey="a"
             className={(e) => {
               return e.isActive
-                ? "  opacity-100 w-[5vw]    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
-                : "   opacity-100 w-[5vw] flex  justify-center     p-1 ";
+                ? "  opacity-100 w-20    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
+                : "   opacity-100 w-20 flex  justify-center     p-1 ";
             }}
             to="./income"
           >
@@ -92,8 +92,8 @@ function Navbar() {
             accessKey="l"
             className={(e) => {
               return e.isActive
-                ? "  opacity-100 bg-red-500/30 w-[5vw]  flex justify-center content-center border-red-800  border-2 p-1  "
-                : "   opacity-100 flex  justify-center  w-[5vw]    p-1 ";
+                ? "  opacity-100 bg-red-500/30 w-20  flex justify-center content-center border-red-800  border-2 p-1  "
+                : "   opacity-100 flex  justify-center  w-20    p-1 ";
             }}
             to="./Expenses"
           >
@@ -104,7 +104,7 @@ function Navbar() {
             className={(e) => {
               return e.isActive
                 ? "  opacity-100 bg-blue-500/30  flex justify-center content-center border-blue-800  border-2 p-1 w-full  "
-                : "   opacity-100  flex  justify-center  w-[5vw]     p-1  ";
+                : "   opacity-100  flex  justify-center  w-20     p-1  ";
             }}
             to="./DailyBook"
           >
