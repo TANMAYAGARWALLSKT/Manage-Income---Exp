@@ -51,64 +51,66 @@ function Navbar() {
 
   return (
     <div className="absolute h-screen navbar  rounded-full z-50">
-      <div className="flex flex-wrap mt-10 content-center justify-center gap-4 w-[5vw]">
-        <NavLink
-          className="w-[5vw] flex justify-center"
-          onClick={toggleProfile}
-        >
-          <User
-            accessKey="u"
-            className=""
-            avatarProps={{
-              src: userPhotoURL,
+      <div className="flex flex-wrap justify-around gap-4 w-20 h-auto min-h-screen">
+        <span>
+          {" "}
+          <NavLink
+            className="w-20 mt-10  flex justify-center"
+            onClick={toggleProfile}
+          >
+            <User
+              accessKey="u"
+              className=""
+              avatarProps={{
+                src: userPhotoURL,
+              }}
+            />
+          </NavLink>
+          {showProfile && <LoginInfo />}
+          {/* Render Profile component if showProfile is true */}
+          <NavLink to="/Home">
+            <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
+              {time}
+            </h1>
+
+            <h1 className=" text-white w-[5vw] noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
+              {date}
+            </h1>
+          </NavLink>
+          <NavLink
+            accessKey="a"
+            className={(e) => {
+              return e.isActive
+                ? "  opacity-100 w-[5vw]    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
+                : "   opacity-100 w-[5vw] flex  justify-center     p-1 ";
             }}
-          />
-        </NavLink>
-        {showProfile && <LoginInfo />}
-        {/* Render Profile component if showProfile is true */}
-        <NavLink to="/Home">
-          <h1 className=" text-white w-[5vw] noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
-            {time}
-          </h1>
-
-          <h1 className=" text-white w-[5vw] noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
-            {date}
-          </h1>
-        </NavLink>
-        <NavLink
-          accessKey="a"
-          className={(e) => {
-            return e.isActive
-              ? "  opacity-100 w-[5vw]    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
-              : "   opacity-100 w-[5vw] flex  justify-center     p-1 ";
-          }}
-          to="./income"
-        >
-          <img className="w-10" src="/profit.svg" alt="" />
-        </NavLink>
-
-        <NavLink
-          accessKey="l"
-          className={(e) => {
-            return e.isActive
-              ? "  opacity-100 bg-red-500/30 w-[5vw]  flex justify-center content-center border-red-800  border-2 p-1  "
-              : "   opacity-100 flex  justify-center  w-[5vw]    p-1 ";
-          }}
-          to="./Expenses"
-        >
-          <img className="w-10" src="/expense.svg" alt="" />
-        </NavLink>
-        <NavLink
-          accessKey="b"
-          className={(e) => {
-            return e.isActive
-              ? "  opacity-100 bg-blue-500/30  flex justify-center content-center border-blue-800  border-2 p-1 w-full  "
-              : "   opacity-100  flex  justify-center  w-[5vw]     p-1  ";
-          }}
-          to="./DailyBook"
-        >
-          <img className="w-8 m-2" src="/books.png" alt="" />
-        </NavLink>
+            to="./income"
+          >
+            <img className="w-10" src="/profit.svg" alt="" />
+          </NavLink>
+          <NavLink
+            accessKey="l"
+            className={(e) => {
+              return e.isActive
+                ? "  opacity-100 bg-red-500/30 w-[5vw]  flex justify-center content-center border-red-800  border-2 p-1  "
+                : "   opacity-100 flex  justify-center  w-[5vw]    p-1 ";
+            }}
+            to="./Expenses"
+          >
+            <img className="w-10" src="/expense.svg" alt="" />
+          </NavLink>
+          <NavLink
+            accessKey="b"
+            className={(e) => {
+              return e.isActive
+                ? "  opacity-100 bg-blue-500/30  flex justify-center content-center border-blue-800  border-2 p-1 w-full  "
+                : "   opacity-100  flex  justify-center  w-[5vw]     p-1  ";
+            }}
+            to="./DailyBook"
+          >
+            <img className="w-8 m-2" src="/books.png" alt="" />
+          </NavLink>
+        </span>
         <img
           onClick={logout}
           className="w-10  absolute rounded-full  bottom-5"
