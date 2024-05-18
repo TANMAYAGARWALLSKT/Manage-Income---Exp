@@ -10,7 +10,7 @@ import { SparklesCore } from "../ui/sparkles";
 function Indexpage() {
   return (
     // flex flex-wrap justify-center content-center
-    <div className="flex noto-sans pt-10 justify-center content-center gap-20 flex-wrap">
+    <div className="flex noto-sans w-full h-full pt-10 justify-center content-center gap-20 flex-wrap">
       <CanvasRevealEffect
         className="h-full w-full"
         animationSpeed={2}
