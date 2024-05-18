@@ -12,9 +12,8 @@ function Indexpage() {
     // flex flex-wrap justify-center content-center
     <div className="flex noto-sans w-full h-full pt-10 justify-center content-center gap-20 flex-wrap">
       <CanvasRevealEffect
-        className="h-full w-full"
+        className="w-full h-full absolute top-0 z-0"
         animationSpeed={2}
-        containerClassName="w-full h-full top-0 absolute z-0 "
         colors={[
           [255, 191, 0],
           [255, 255, 240],
