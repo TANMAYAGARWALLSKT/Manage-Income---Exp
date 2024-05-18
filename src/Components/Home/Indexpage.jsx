@@ -12,7 +12,7 @@ function Indexpage() {
     // flex flex-wrap justify-center content-center
     <div className="flex noto-sans pt-10 justify-center content-center gap-20 flex-wrap">
       <CanvasRevealEffect
-        className="h-screen w-screen"
+        className="h-full w-full"
         animationSpeed={2}
         containerClassName="bg- h-auto min-w-screen min-h-screen
          w-auto  top-0 absolute z-0 "
