@@ -14,7 +14,8 @@ function Indexpage() {
       <CanvasRevealEffect
         className="h-screen w-screen"
         animationSpeed={2}
-        containerClassName="bg- h-screen w-screen  top-0 absolute z-0 "
+        containerClassName="bg- h-auto min-w-screen min-h-screen
+         w-auto  top-0 absolute z-0 "
         colors={[
           [255, 191, 0],
           [255, 255, 240],
@@ -30,10 +31,10 @@ function Indexpage() {
         particleColor="#FFFFFF"
       />
 
-      <Incometab  />
-      <Expensetab  />
-      <Cashinhand  />
-      <Totalsale  />
+      <Incometab />
+      <Expensetab />
+      <Cashinhand />
+      <Totalsale />
     </div>
   );
 }
