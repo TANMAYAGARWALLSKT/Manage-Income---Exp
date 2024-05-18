@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[rgb(17,17,21)] h-screen w-screen min-w-screen">
+    <div className="min-h-screen bg-[rgb(17,17,21)] h-auto w-auto  min-w-screen">
      
       {user ? <Navbar /> : null}
       <Router />
