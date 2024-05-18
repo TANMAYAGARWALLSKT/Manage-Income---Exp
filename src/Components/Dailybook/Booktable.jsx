@@ -101,7 +101,7 @@ export default function Booktable() {
       console.error("Error deleting document:", error);
     }
   };
-  
+
   return (
     <div className="w-screen h-full flex justify-center">
       <div className="text-3xl h-full  noto-sans text-white">
@@ -205,10 +205,10 @@ export default function Booktable() {
                 <TableCell className="text-2xl rounded-3xl">
                   {item.Notes}
                 </TableCell>
-                
+
                 <TableCell
                   onClick={() => deleteDocument(item.id)}
-                  className="text-2xl  hover:bg-green-500    rounded-3xl"
+                  className="text-2xl  hover:bg-red-500    rounded-3xl"
                 >
                   <DeleteIcon />
                 </TableCell>
