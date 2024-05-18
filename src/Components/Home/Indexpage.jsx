@@ -11,15 +11,6 @@ function Indexpage() {
   return (
     // flex flex-wrap justify-center content-center
     <div className="flex noto-sans w-full h-full pt-10 justify-center content-center gap-20 flex-wrap">
-      <CanvasRevealEffect
-        animationSpeed={2}
-        containerClassName="w-full bg-slate-950 h-full top-0 absolute z-0 "
-        colors={[
-          [255, 191, 0],
-          [255, 255, 240],
-        ]}
-        dotSize={2}
-      ></CanvasRevealEffect>
       <SparklesCore
         background="transparent"
         minSize={0.5}
