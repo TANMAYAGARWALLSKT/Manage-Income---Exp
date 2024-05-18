@@ -76,7 +76,7 @@ function Navbar() {
           </h1>
         </NavLink>
         <NavLink
-          accessKey="p"
+          accessKey="a"
           className={(e) => {
             return e.isActive
               ? "  opacity-100 w-[5vw]    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../../Config/firebase";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Textarea } from "@nextui-org/react";
 
 function Incometable() {
   const [Model, SetModel] = useState("");
@@ -120,7 +120,7 @@ function Incometable() {
             placeholder="Amount"
             className="w-[20vw]"
           />
-          <Input
+          <Textarea
             label="Note"
             variant="blacked"
             size="lg"
