@@ -9,14 +9,13 @@ import { SparklesCore } from "../ui/sparkles";
 
 function Indexpage() {
   return (
-    // flex flex-wrap justify-center content-center
-    <div className="flex noto-sans w-full h-full pt-10 justify-center content-center gap-20 flex-wrap">
+    <div className="flex noto-sans w-auto  h-auto pt-10  justify-center content-center gap-20 flex-wrap">
       <SparklesCore
         background="transparent"
         minSize={0.5}
         maxSize={0.7}
         particleDensity={200}
-        className="w-full h-full absolute top-0 z-0"
+        className="w-auto h-auto absolute top-0 z-0"
         particleColor="#FFFFFF"
       />
 
