@@ -14,7 +14,22 @@ export const typelist = [
   { value: "", label: "Clear" },
 ];
 export const Navlink_Title = [
-  { Tilte: "Earnings ", Link: "./income", accessKey: "I", Icon: "./list.png" },
-  { Tilte: "Spendings", Link: "./Expenses", accessKey: "E", Icon: "./list.png" },
-  { Tilte: "Transaction", Link: "./DailyBook", accessKey: "D", Icon: "./list.png" },
+  {
+    Tilte: "Earnings ",
+    Link: "./income",
+    accessKey: "I",
+    Icon: "./profit.svg",
+  },
+  {
+    Tilte: "Spendings",
+    Link: "./Expenses",
+    accessKey: "E",
+    Icon: "./expense.svg",
+  },
+  {
+    Tilte: "Transaction",
+    Link: "./DailyBook",
+    accessKey: "D",
+    Icon: "./Dailybook.svg",
+  },
 ];

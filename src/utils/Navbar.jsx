@@ -53,45 +53,97 @@ function Navbar() {
       }, 3000); // 10000 milliseconds = 10 seconds
     }
   };
+  const [isNavbarOpen, setIsNavbarOpen] = useState(true);
+
+  const toggleNavbar = () => {
+    setIsNavbarOpen((prev) => !prev);
+  };
 
   return (
-    <div className=" sticky top-0 left-0 h-full min-h-screen  bg-stone-200 text-zinc-800 shadow-xl shadow-black/40  navbar-bg w-[12.5%] rounded-r-3xl  z-50">
-      <div className="">
-        <span className="flex w-full flex-col  py-10  gap-5 items-center">
-          {" "}
-          <NavLink
-            className=" flex justify-start items-center  gap-5 "
-            onClick={toggleProfile}
+    <div
+      className={`${
+        isNavbarOpen ? "w-full sm:w-[12.5%]" : "w-20"
+      } sticky top-0 left-0 h-full min-h-screen bg-stone-100 text-zinc-800 shadow-md transition-all duration-300 rounded-r-3xl z-50 relative`}
+    >
+      {/* Arrow to close navbar */}
+      <div
+        className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-200 hover:bg-gray-300 cursor-pointer p-2 rounded-full shadow-lg"
+        onClick={() => {
+          toggleNavbar();
+        }}
+      >
+        {isNavbarOpen ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-5 h-5 text-gray-700"
           >
-            <img className="rounded-full h-16 " src={userPhotoURL} />
-            <span>
-              {/* <h1 className=" font-semibold w-full">{userName}</h1> */}
-              {/* <h1 className="text-sm font-Extralight ">{userMail}</h1> */}
-            </span>
-          </NavLink>
-          {showProfile && <LoginInfo />}
-          <span className="flex flex-col gap-2 justify-center items-center my-auto mx-auto ">
-            {Navlink_Title.map((items, Index) => {
-              return (
-                <span className="flex justify-center items-center my-auto mx-auto ">
-                  <NavLink  key={Index} to={items.Link}>
-                    <img
-                      className=" w-10 h-auto mx-auto my-auto  inline-block  items-center"
-                      src={items.Icon}
-                    />
-                    <h1>{items.Tilte}</h1>
-                  </NavLink>
-                </span>
-              );
-            })}
-          </span>
-        </span>
-        {/* <img
-          onClick={logout}
-          className="w-10  absolute rounded-full  bottom-5"
-          src="./logout-svgrepo-com.svg"
-          alt=""
-        /> */}
+            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-5 h-5 text-gray-700 rotate-180 duration-175 ease-soft-spring "
+          >
+            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+          </svg>
+        )}
+      </div>
+
+      <div className="flex flex-col items-center py-8 gap-6">
+        {/* Profile Section */}
+        <NavLink
+          className={`${isNavbarOpen} flex flex-col items-center gap-2 cursor-pointer `}
+          onClick={toggleProfile}
+        >
+          <img
+            className={`${
+              isNavbarOpen ? "h-16 w-16" : "h-10 w-10"
+            } rounded-full  border-2 border-gray-300 object-cover`}
+            src={userPhotoURL}
+            alt="User Profile"
+          />
+          <h1
+            className={`${
+              isNavbarOpen ? "text-xl" : "text-sm"
+            }  font-medium text-gray-800 text-center`}
+          >
+            {userName || "Guest"}
+          </h1>
+        </NavLink>
+        {showProfile && <LoginInfo />}
+
+        {/* Navigation Links */}
+        <div className="flex flex-col gap-4 w-full px-4">
+          {Navlink_Title.map((items, Index) => {
+            return (
+              <NavLink
+                to={items.Link}
+                key={Index}
+                className="flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-gray-200 transition-all"
+              >
+                {/* Dynamic SVG icon */}
+                <img
+                  src={items.Icon}
+                  alt={items.Tilte}
+                  className={` ${
+                    isNavbarOpen ? "w-5 h-5" : "w-10 h-10 "
+                  } text-gray-700 flex-shrink-0`}
+                />
+                {NavLink ? (
+                  <h1 className="text-sm font-medium text-gray-800 truncate">
+                    {items.Tilte}
+                  </h1>
+                ) : (
+                  <></>
+                )}
+              </NavLink>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
