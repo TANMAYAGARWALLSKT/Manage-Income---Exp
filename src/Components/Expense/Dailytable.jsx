@@ -60,8 +60,8 @@ function Dailytable() {
   };
 
   return (
-    <div className="flex flex-wrap justify-center">
-      <h1 className="font-bold noto-sans text-red-600 text-[8vw] w-screen flex justify-center">
+    <div className="flex gap-10   rounded-xl flex-col justify-center  bg-stone-300/20 z-50  ">
+      <h1 className=" text-red-600 text-7xl  w-full  font-semibold  flex justify-center items-center ">
         Add {type}
       </h1>
 
@@ -69,12 +69,12 @@ function Dailytable() {
         ref={formRef} // Attach the ref to the form element
         id="Income"
         onSubmit={handleinput}
-        className="Forst w-[80vw] rounded-3xl py-32 px-10"
+        className=""
       >
-        <span className="flex flex-wrap w-full justify-center content-center gap-10">
+        <span className="   rounded-xl  flex justify-center gap-5 flex-col px-10 text-black  py-12 w-[40vw]">
           <Input
             label="Note"
-            className="w-[22vw]"
+            className=""
             type="text"
             size="lg"
             placeholder="Note"
@@ -84,7 +84,7 @@ function Dailytable() {
 
           <Input
             label="Amount"
-            className="w-[22vw]"
+            className=""
             type="number"
             id="Amount"
             name="Amount"
@@ -96,7 +96,7 @@ function Dailytable() {
 
           <Input
             label="Payment Mode"
-            className="w-[22vw]"
+            className=""
             type="text"
             id="payment-mode"
             name="payment_mode"
@@ -116,7 +116,7 @@ function Dailytable() {
             <option value="Other">Others</option>
           </datalist>
 
-          <Button type="submit" size="lg" className="w-[22vw] h-20 bg-black">
+          <Button type="submit" size="lg" className=" bg-black text-white ">
             Submit
           </Button>
         </span>

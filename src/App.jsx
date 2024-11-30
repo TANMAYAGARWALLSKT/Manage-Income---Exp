@@ -28,9 +28,9 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[rgb(17,17,21)] h-auto w-auto  min-w-screen">
-     
+    <div className="bg-stone-400  Font  flex items-center overflow-hidden  gap-[1%]  ">
       {user ? <Navbar /> : null}
+
       <Router />
     </div>
   );

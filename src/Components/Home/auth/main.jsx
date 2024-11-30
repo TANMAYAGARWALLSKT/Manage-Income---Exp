@@ -55,21 +55,14 @@ export default function Auth() {
   };
 
   return (
-    <div className="bg-black w-screen h-screen flex flex-wrap gap-10 justify-center place-items-center">
-      <SparklesCore
-        background="transprant"
-        className="w-screen h-screen"
-        minSize={0.2}
-        maxSize={0.6}
-        particleDensity={200}
-      />
-      <span className="absolute bg-black/10 backdrop-blur-xl shadow-lg shadow-yellow-500/5 rounded-3xl px-10 py-16 gap-5 flex justify-center flex-wrap content-center">
+    <div className="  w-[99%] h-[95%] flex justify-center items-center z-[999]   ">
+      <div className="relative shadow-2xl shadow-yellow-500/40 bg-black  text-white  border-2 rounded-xl border-yellow-500/20  overflow-hidden  flex justify-center items-center flex-col ">
         <form
-          className="flex justify-center content-center gap-10 flex-wrap w-[20vw]"
+          className="flex rounded-lg    flex-col z-30   gap-10 justify-center items-center py-10  px-10"
           onSubmit={(e) => handleSubmit(e, false)}
         >
-          <h1 className="font-bold text-3xl uppercase">Log In</h1>
-          <Divider className="bg-yellow-500/60" />
+          <h1 className="font-bold text-3xl text-white uppercase">Log In</h1>
+          {/* <Divider className="bg-yellow-500/60" /> */}
           <Input
             onChange={handleChange}
             name="email"
@@ -77,7 +70,7 @@ export default function Auth() {
             type="email"
             variant="bordered"
             placeholder="Enter your Email"
-            className="max-w-xs w-[22vw]"
+            className="max-w-xs w-[22vw] z-40 text-white"
           />
           <Input
             onChange={handleChange}
@@ -86,32 +79,43 @@ export default function Auth() {
             variant="bordered"
             placeholder="Enter your password"
             type={isVisible ? "text" : "password"}
-            className="max-w-xs w-[22vw]"
+            className="max-w-xs w-[22vw] z-40"
           />
-          <Button className="bg-yellow-700" type="submit">
+          <Button className="bg-yellow-600 z-40" type="submit">
             Create An Account
           </Button>
         </form>
-        <Divider className="bg-yellow-400/60" />
-        <Button onClick={(e) => handleSubmit(e, true)} className="bg-blue-700">
-          Sign Up
-        </Button>
-        <Button
-          onClick={signInWithGoogle}
-          className="bg-zinc-200 text-red-600 font-semibold"
-        >
-          <svg
-            className="bg-zinc-300 p-2 rounded-full"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 50 50"
-            width="30px"
-            height="30px"
-          >
-            <path d="M 25.996094 48 C 13.3125 48 2.992188 37.683594 2.992188 25 C 2.992188 12.316406 13.3125 2 25.996094 2 C 31.742188 2 37.242188 4.128906 41.488281 7.996094 L 42.261719 8.703125 L 34.675781 16.289063 L 33.972656 15.6875 C 31.746094 13.78125 28.914063 12.730469 25.996094 12.730469 C 19.230469 12.730469 13.722656 18.234375 13.722656 25 C 13.722656 31.765625 19.230469 37.269531 25.996094 37.269531 C 30.875 37.269531 34.730469 34.777344 36.546875 30.53125 L 24.996094 30.53125 L 24.996094 20.175781 L 47.546875 20.207031 L 47.714844 21 C 48.890625 26.582031 47.949219 34.792969 43.183594 40.667969 C 39.238281 45.53125 33.457031 48 25.996094 48 Z" />
-          </svg>
-          Sign In With Google
-        </Button>
-      </span>
+        <span className="text-sm text-red-500/90 pb-3 flex flex-wrap w-[25vw]">
+          *There Is no need to authentication/fill more Details Just Fill Email
+          id and password fields and click on sign up{" "}
+        </span>
+        <span className=" pb-3">
+          <hr color="" className="text-slate-400 w-full py-3 " />
+          <span className="flex justify-center w-full h-full items-center pb-3  gap-5">
+            <Button
+              onClick={(e) => handleSubmit(e, true)}
+              className="bg-blue-700 z-40"
+            >
+              Sign Up
+            </Button>
+            <Button
+              onClick={signInWithGoogle}
+              className="bg-zinc-200 text-red-600 font-semibold z-40"
+            >
+              <svg
+                className="bg-zinc-300 p-2 rounded-full"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 50 50"
+                width="30px"
+                height="30px"
+              >
+                <path d="M 25.996094 48 C 13.3125 48 2.992188 37.683594 2.992188 25 C 2.992188 12.316406 13.3125 2 25.996094 2 C 31.742188 2 37.242188 4.128906 41.488281 7.996094 L 42.261719 8.703125 L 34.675781 16.289063 L 33.972656 15.6875 C 31.746094 13.78125 28.914063 12.730469 25.996094 12.730469 C 19.230469 12.730469 13.722656 18.234375 13.722656 25 C 13.722656 31.765625 19.230469 37.269531 25.996094 37.269531 C 30.875 37.269531 34.730469 34.777344 36.546875 30.53125 L 24.996094 30.53125 L 24.996094 20.175781 L 47.546875 20.207031 L 47.714844 21 C 48.890625 26.582031 47.949219 34.792969 43.183594 40.667969 C 39.238281 45.53125 33.457031 48 25.996094 48 Z" />
+              </svg>
+              Sign In With Google
+            </Button>
+          </span>
+        </span>
+      </div>
     </div>
   );
 }

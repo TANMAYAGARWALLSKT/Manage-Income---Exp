@@ -13,3 +13,8 @@ export const typelist = [
   { value: "Expense", label: "Expense" },
   { value: "", label: "Clear" },
 ];
+export const Navlink_Title = [
+  { Tilte: "Earnings ", Link: "./income", accessKey: "I", Icon: "./list.png" },
+  { Tilte: "Spendings", Link: "./Expenses", accessKey: "E", Icon: "./list.png" },
+  { Tilte: "Transaction", Link: "./DailyBook", accessKey: "D", Icon: "./list.png" },
+];

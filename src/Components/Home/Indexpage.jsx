@@ -9,16 +9,7 @@ import { SparklesCore } from "../ui/sparkles";
 
 function Indexpage() {
   return (
-    <div className="flex noto-sans w-auto min-h-screen min-w-screen  h-auto pt-10  justify-center content-center gap-20 flex-wrap">
-      <SparklesCore
-        background="transparent"
-        minSize={0.5}
-        maxSize={0.7}
-        particleDensity={200}
-        className="w-auto h-auto min-w-screen min-h-screen absolute top-0 z-0"
-        particleColor="#FFFFFF"
-      />
-
+    <div className="flex noto-sans w-auto min-h-screen min-w-screen  h-auto pt-10  justify-center content-center gap-20 flex-wrap z-50 ">
       <Incometab />
       <Expensetab />
       <Cashinhand />

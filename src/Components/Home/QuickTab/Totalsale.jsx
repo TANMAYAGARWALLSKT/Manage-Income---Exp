@@ -43,7 +43,7 @@ function Totalsale() {
   return (
     <Card
       isBlurred
-      className=" hover:scale-110  dark:bg-green-600/30 backdrop-blur-10 text-zinc-300 w-auto h-auto"
+      className=" hover:scale-110  bg-background/10 custom-blur dark:bg-green-600/30 backdrop-blur-10 text-zinc-300 w-auto h-auto"
     >
       <CardBody className="">
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center p-3 ">

@@ -103,8 +103,8 @@ export default function Booktable() {
   };
 
   return (
-    <div className="w-screen h-full flex justify-center">
-      <div className="text-3xl h-full  noto-sans text-white">
+    <div className=" px-4 pb-5">
+      <div className="text-3xl h-full  noto-sans ">
         <form onSubmit={handleFilterSubmit}>
           <span className="flex my-10 h-full w-[80vw] items-center gap-10">
             <Input

@@ -47,7 +47,7 @@ function Expensetab() {
   return (
     <Card
       isBlurred
-      className=" hover:scale-110  dark:bg-green-600/30 backdrop-blur-10 text-zinc-300 max-w-[610px]"
+      className=" hover:scale-110  custom-blur bg-background/10 dark:bg-green-600/30 backdrop-blur-10 text-zinc-300 max-w-[610px]"
     >
       <CardBody className="">
         <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center p-3 ">

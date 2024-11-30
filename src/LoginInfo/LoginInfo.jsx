@@ -29,7 +29,7 @@ function LoginInfo() {
     });
   });
   return (
-    <div className="flex top-0 w-screen animate-[Op_3s_ease-in-out_infinite] bg-black/60 h-screen absolute  left-0 flex-wrap justify-center  content-center">
+    <div className="flex top-0 w-screen animate-[Op_3s_ease-in-out_infinite]  h-screen absolute  left-0 flex-wrap justify-center  content-center">
       <div className="flex p-10 gap-10 w-[40vw] h-[40vh] flex-wrap justify-center    Forst noto-sans text-white">
         <img
           src={userPhotoURL}

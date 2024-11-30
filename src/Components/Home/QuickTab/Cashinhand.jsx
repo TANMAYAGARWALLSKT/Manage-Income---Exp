@@ -4,7 +4,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { Card, CardBody } from "@nextui-org/react";
 
 function Cashinhand() {
-  const [cashInHand, setCashInHand] = useState(100000);
+  const [cashInHand, setCashInHand] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +59,7 @@ function Cashinhand() {
   return (
     <Card
       isBlurred
-      className="hover:scale-110 bg-background/10 dark:bg-blue-900/20 w-auto h-auto backdrop-blur-10 text-zinc-300 "
+      className="hover:scale-110 bg-background/10 custom-blur dark:bg-blue-900/20 w-auto h-auto backdrop-blur-10 text-zinc-300 "
     >
       <CardBody>
         <div className="flex items-center justify-center p-3">

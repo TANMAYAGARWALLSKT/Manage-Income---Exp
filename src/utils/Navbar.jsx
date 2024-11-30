@@ -4,6 +4,7 @@ import { User } from "@nextui-org/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../Config/firebase";
 import LoginInfo from "../LoginInfo/LoginInfo";
+import { Navlink_Title } from "../Components/data";
 
 function Navbar() {
   const [date, setDate] = useState("");
@@ -11,6 +12,9 @@ function Navbar() {
   const [userPhotoURL, setUserPhotoURL] = useState(
     "https://via.placeholder.com/150"
   );
+  const [userName, setUserName] = useState(null);
+  const [userMail, setUserMail] = useState(null);
+  const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -31,13 +35,14 @@ function Navbar() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        setUserName(user.displayName);
+        // setUserMail(user.email);
         setUserPhotoURL(user.photoURL);
       } else {
         setUserPhotoURL("https://via.placeholder.com/150");
       }
     });
   });
-  const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
 
   const toggleProfile = () => {
     setShowProfile(!showProfile); // Toggle the value of showProfile
@@ -50,73 +55,43 @@ function Navbar() {
   };
 
   return (
-    <div className="absolute h-screen navbar  rounded-full z-50">
-      <div className="flex flex-wrap justify-around gap-4 w-20 h-auto min-h-screen">
-        <span>
+    <div className=" sticky top-0 left-0 h-full min-h-screen  bg-stone-200 text-zinc-800 shadow-xl shadow-black/40  navbar-bg w-[12.5%] rounded-r-3xl  z-50">
+      <div className="">
+        <span className="flex w-full flex-col  py-10  gap-5 items-center">
           {" "}
           <NavLink
-            className="w-20 mt-10  flex justify-center"
+            className=" flex justify-start items-center  gap-5 "
             onClick={toggleProfile}
           >
-            <User
-              accessKey="u"
-              className=""
-              avatarProps={{
-                src: userPhotoURL,
-              }}
-            />
+            <img className="rounded-full h-16 " src={userPhotoURL} />
+            <span>
+              {/* <h1 className=" font-semibold w-full">{userName}</h1> */}
+              {/* <h1 className="text-sm font-Extralight ">{userMail}</h1> */}
+            </span>
           </NavLink>
           {showProfile && <LoginInfo />}
-          {/* Render Profile component if showProfile is true */}
-          <NavLink to="/Home">
-            <h1 className=" text-white w-20 noto-sans  h-[3vh]  text-[1rem] flex justify-center ">
-              {time}
-            </h1>
-
-            <h1 className=" text-white w-20 noto-sans text-[0.80rem]    h-[3vh]    text-sm flex justify-center   ">
-              {date}
-            </h1>
-          </NavLink>
-          <NavLink
-            accessKey="a"
-            className={(e) => {
-              return e.isActive
-                ? "  opacity-100 w-20    bg-green-500/30  flex justify-center content-center border-green-800  border-2 p-1  "
-                : "   opacity-100 w-20 flex  justify-center     p-1 ";
-            }}
-            to="./income"
-          >
-            <img className="w-10" src="/profit.svg" alt="" />
-          </NavLink>
-          <NavLink
-            accessKey="l"
-            className={(e) => {
-              return e.isActive
-                ? "  opacity-100 bg-red-500/30 w-20  flex justify-center content-center border-red-800  border-2 p-1  "
-                : "   opacity-100 flex  justify-center  w-20    p-1 ";
-            }}
-            to="./Expenses"
-          >
-            <img className="w-10" src="/expense.svg" alt="" />
-          </NavLink>
-          <NavLink
-            accessKey="b"
-            className={(e) => {
-              return e.isActive
-                ? "  opacity-100 bg-blue-500/30  flex justify-center content-center border-blue-800  border-2 p-1 w-full  "
-                : "   opacity-100  flex  justify-center  w-20     p-1  ";
-            }}
-            to="./DailyBook"
-          >
-            <img className="w-8 m-2" src="/books.png" alt="" />
-          </NavLink>
+          <span className="flex flex-col gap-2 justify-center items-center my-auto mx-auto ">
+            {Navlink_Title.map((items, Index) => {
+              return (
+                <span className="flex justify-center items-center my-auto mx-auto ">
+                  <NavLink  key={Index} to={items.Link}>
+                    <img
+                      className=" w-10 h-auto mx-auto my-auto  inline-block  items-center"
+                      src={items.Icon}
+                    />
+                    <h1>{items.Tilte}</h1>
+                  </NavLink>
+                </span>
+              );
+            })}
+          </span>
         </span>
-        <img
+        {/* <img
           onClick={logout}
           className="w-10  absolute rounded-full  bottom-5"
           src="./logout-svgrepo-com.svg"
           alt=""
-        />
+        /> */}
       </div>
     </div>
   );

@@ -54,40 +54,31 @@ function Incometable() {
   };
 
   return (
-    <div className="flex justify-center w-auto h-auto relative flex-wrap">
-      <h1 className="text-green-500/60 noto-sans text-[8vw] w-auto h-auto flex-wrap flex justify-center">
+    <div className="flex gap-10   rounded-xl flex-col justify-center  bg-stone-300/20 z-50   ">
+      <h1 className=" text-green-600 text-7xl  w-full  font-semibold  flex justify-center items-center ">
         Add {type}
       </h1>
 
-      <form
-        ref={formRef}
-        id="Income"
-        className="Forst w-[80vw] rounded-3xl py-32 px-10"
-        onSubmit={handleInput}
-      >
-        <span className="flex w-auto h-auto h-min-[100vh] flex-wrap justify-center content-center gap-20">
+      <form ref={formRef} id="Income" className="" onSubmit={handleInput}>
+        <span className="   rounded-xl  flex justify-center gap-3 flex-col px-10 text-black  py-12 w-[40vw] ">
           <Input
             isRequired
-            variant="blacked"
+            variant="flat"
             type="text"
             value={Model}
             onChange={(e) => SetModel(e.target.value)}
             label="Model"
             placeholder="Enter your Model"
-            size="lg"
-            className="bg-zince-950 w-[20vw]"
           />
           <Input
             isRequired
             variant="blacked"
             label=" Payment Mode"
-            size="lg"
             type="text"
             id="Payment Mode"
             name="Payment Mode"
             placeholder="Payment Mode"
             list="payment-options"
-            className=" w-[20vw]"
             value={PaymentMode}
             onChange={(e) => SetPaymentMode(e.target.value)}
           >
@@ -97,13 +88,11 @@ function Incometable() {
             isRequired
             variant="blacked"
             label=" Company Name"
-            size="lg"
             type="text"
             id="company"
             name="company"
             placeholder="Enter Phone Company"
             list="phone-companies"
-            className=" w-[20vw]"
             value={Company}
             onChange={(e) => SetCompany(e.target.value)}
           >
@@ -112,25 +101,23 @@ function Incometable() {
           <Input
             isRequired
             variant="blacked"
-            size="lg"
             label="Amount"
             type="number"
             value={Amount}
             onChange={(e) => SetAmount(e.target.value)}
             placeholder="Amount"
-            className="w-[20vw]"
+            className=""
           />
           <Textarea
             label="Note"
             variant="blacked"
-            size="lg"
             type="text"
             value={Notes}
             onChange={(e) => SetNotes(e.target.value)}
             placeholder="Note"
-            className="w-[20vw]"
+            className=""
           />
-          <Button type="submit" className="bg-black w-[20vw]" size="lg">
+          <Button type="submit" className="bg-zinc-900 text-white">
             Submit
           </Button>
           <datalist id="payment-options">
