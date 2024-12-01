@@ -5,6 +5,9 @@
 .Font {
   font-family: "Sora-Variable";
 }
+html ,body{
+  background-color: antiquewhite;
+}
 
 .navbar {
   background-color: #ffffff2c;

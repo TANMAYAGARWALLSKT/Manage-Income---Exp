@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../../Config/firebase";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Divider } from "@nextui-org/react";
 
 function Dailytable() {
   const [Model, SetModel] = useState("");
@@ -60,11 +60,12 @@ function Dailytable() {
   };
 
   return (
-    <div className="flex gap-10   rounded-xl flex-col justify-center  bg-stone-300/20 z-50  ">
-      <h1 className=" text-red-600 text-7xl  w-full  font-semibold  flex justify-center items-center ">
-        Add {type}
+    <div className="flex gap-5  py-5 px-2  rounded-xl flex-col justify-center  bg-stone-800 z-50  ">
+      {" "}
+      <h1 className=" text-red-600 text-7xl uppercase   w-full  font-bold  flex justify-center items-center ">
+        {type}
       </h1>
-
+      <Divider className="bg-white/50" />
       <form
         ref={formRef} // Attach the ref to the form element
         id="Income"
