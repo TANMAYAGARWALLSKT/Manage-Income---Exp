@@ -5,11 +5,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../Config/firebase";
 import LoginInfo from "../LoginInfo/LoginInfo";
 import { Navlink_Title } from "../Components/data";
-<<<<<<< HEAD
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleNav } from '../Redux';
-=======
->>>>>>> origin/main
 
 function Navbar() {
   const [date, setDate] = useState("");
@@ -21,12 +18,9 @@ function Navbar() {
   const [userMail, setUserMail] = useState(null);
   const [showProfile, setShowProfile] = useState(false); // State to control the visibility of the Profile component
 
-<<<<<<< HEAD
   const dispatch = useDispatch();
   const isNavbarOpen = useSelector((state) => state.nav.isNavbarOpen);
 
-=======
->>>>>>> origin/main
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
@@ -64,16 +58,9 @@ function Navbar() {
       }, 3000); // 10000 milliseconds = 10 seconds
     }
   };
-<<<<<<< HEAD
 
   const toggleNavbar = () => {
     dispatch(toggleNav());
-=======
-  const [isNavbarOpen, setIsNavbarOpen] = useState(true);
-
-  const toggleNavbar = () => {
-    setIsNavbarOpen((prev) => !prev);
->>>>>>> origin/main
   };
 
   return (
@@ -166,8 +153,4 @@ function Navbar() {
   );
 }
 
-<<<<<<< HEAD
 export default Navbar;
-=======
-export default Navbar;
->>>>>>> origin/main

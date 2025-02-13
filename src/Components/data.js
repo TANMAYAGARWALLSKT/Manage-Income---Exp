@@ -15,15 +15,12 @@ export const typelist = [
 ];
 export const Navlink_Title = [
   {
-<<<<<<< HEAD
     Tilte: "Dashboard",
     Link: "./Dashboard",
     accessKey: "D",
     Icon: "/Dashboard.svg",
   },
   {
-=======
->>>>>>> origin/main
     Tilte: "Earnings ",
     Link: "./income",
     accessKey: "I",
