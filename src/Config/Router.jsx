@@ -9,12 +9,18 @@ import Auth from "../Components/Home/auth/main";
 import { auth } from "./firebase";
 import LoginInfo from "../LoginInfo/LoginInfo";
 import { SparklesCore } from "../Components/ui/sparkles";
+<<<<<<< HEAD
 import { useSelector } from 'react-redux';
 
 function Router() {
   const [currentAuth, setCurrentAuth] = useState(false);
   const isNavbarOpen = useSelector((state) => state.nav.isNavbarOpen);
   const user = useSelector((state) => state.nav.user);
+=======
+
+function Router() {
+  const [currentAuth, setCurrentAuth] = useState(false);
+>>>>>>> origin/main
 
   useEffect(() => {
     // Listener for Firebase authentication state changes
@@ -37,7 +43,11 @@ function Router() {
   };
 
   return (
+<<<<<<< HEAD
     <div>
+=======
+    <div className=" ">
+>>>>>>> origin/main
       <div>
         <SparklesCore
           background="transparent"
@@ -51,7 +61,11 @@ function Router() {
           <Route
             path="/User"
             element={
+<<<<<<< HEAD
               <div className="top-0 shadow-2xl shadow-black/70 bg-black absolute right-0 w-full sm:w-[96%] h-[96%] my-[1%] mx-0 sm:mx-[2%] overflow-hidden rounded-3xl flex justify-center items-center">
+=======
+              <div className=" top-0 shadow-2xl  shadow-black/70 bg-black absolute    right-0 w-[96%] h-[96%] my-[1%] mx-[2%] overflow-hidden rounded-3xl  flex justify-center items-center ">
+>>>>>>> origin/main
                 <SparklesCore
                   background="transparent"
                   minSize={0.5}
@@ -64,6 +78,7 @@ function Router() {
               </div>
             }
           />
+<<<<<<< HEAD
           
           {/* Shared styles for authenticated routes */}
           {[
@@ -110,10 +125,76 @@ function Router() {
               }
             />
           ))}
+=======
+          <Route
+            path="/Home"
+            element={
+              <AuthReq>
+                <div className="top-0  overflow-hidden shadow-2xl  shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <Indexpage />
+                </div>
+              </AuthReq>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <AuthReq>
+                <div className="top-0 shadow-2xl overflow-hidden  shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <Indexpage />
+                </div>
+              </AuthReq>
+            }
+          />
+          <Route
+            path="/Income"
+            element={
+              <AuthReq>
+                <div className="top-0 shadow-2xl overflow-hidden  shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <Income />
+                </div>
+              </AuthReq>
+            }
+          />
+          <Route
+            path="/Expenses"
+            element={
+              <AuthReq>
+                <div className="top-0 shadow-2xl overflow-hidden shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <Expense />
+                </div>
+              </AuthReq>
+            }
+          />
+          <Route
+            path="/Dailybook"
+            element={
+              <AuthReq>
+                <div className="top-0 shadow-2xl overflow-hidden shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <Testdaily />
+                </div>
+              </AuthReq>
+            }
+          />
+          <Route
+            path="/UserInfo"
+            element={
+              <AuthReq>
+                <div className="top-0 shadow-2xl shaders overflow-hidden shadow-black/70 bg-black absolute right-0 w-[83%] h-[96%] my-[1%] mx-[1%] rounded-3xl flex justify-center items-center">
+                  <LoginInfo />
+                </div>
+              </AuthReq>
+            }
+          />
+>>>>>>> origin/main
         </Routes>
       </div>
     </div>
   );
 }
 
+<<<<<<< HEAD
 export default Router;
+=======
+export default Router;
+>>>>>>> origin/main

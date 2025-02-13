@@ -8,6 +8,7 @@ export default {
   ],
   theme: {
     extend: {
+<<<<<<< HEAD
       colors: {
         primary: "#FF6B6B",
         secondary: "#4ECDC4", 
@@ -15,6 +16,8 @@ export default {
         neutral: "#2C3E50",
         highlight: "#F7D794"
       },
+=======
+>>>>>>> origin/main
       animation: {
         first: "moveVertical 30s ease infinite",
         second: "moveInCircle 20s reverse infinite",
@@ -63,12 +66,15 @@ export default {
           },
         },
       },
+<<<<<<< HEAD
       borderWidth: {
         'card': '1px',
       },
       borderColor: {
         'card': 'rgba(255, 255, 255, 0.1)',
       },
+=======
+>>>>>>> origin/main
     },
   },
 

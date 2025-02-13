@@ -8,9 +8,12 @@
 html ,body{
   background-color: antiquewhite;
 }
+<<<<<<< HEAD
 ::-webkit-scrollbar{
   width: 5px;
 }
+=======
+>>>>>>> origin/main
 
 .navbar {
   background-color: #ffffff2c;

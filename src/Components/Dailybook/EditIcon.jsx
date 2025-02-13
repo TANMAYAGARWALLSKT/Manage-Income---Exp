@@ -35,4 +35,8 @@ export const EditIcon = (props) => (
       strokeWidth={1.5}
     />
   </svg>
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> origin/main
